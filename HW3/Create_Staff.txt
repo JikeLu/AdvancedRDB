@@ -1,0 +1,24 @@
+CREATE OR REPLACE PROCEDURE Create_Staff (
+    p_staffno    IN staff.staffno%TYPE,
+    p_fname      IN staff.fname%TYPE,
+    p_lname      IN staff.lname%TYPE,
+    p_position   IN staff.position%TYPE,
+    p_sex        IN staff.sex%TYPE,
+    p_dob        IN staff.dob%TYPE,
+    p_salary     IN staff.salary%TYPE,
+    p_branchno   IN staff.branchno%TYPE
+)
+IS
+BEGIN
+    INSERT INTO staff (staffno, fname, lname, position, sex, dob, salary, branchno)
+    VALUES (p_staffno, p_fname, p_lname, p_position, p_sex, p_dob, p_salary, p_branchno);
+
+    DBMS_OUTPUT.PUT_LINE('Staff member ' || p_fname || ' ' || p_lname || ' has been added successfully.');
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE('Error: Staff member with StaffNo ' || p_staffno || ' already exists.');
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('An error occurred while adding the staff member: ' || SQLERRM);
+END Create_Staff;
+/
+

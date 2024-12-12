@@ -1,0 +1,78 @@
+SQL> START "E:\ARDB\HW3\HW3_Q5_Lu.txt";
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> CREATE OR REPLACE PROCEDURE calculate_gpa AS
+  2      v_s_id student.s_id%TYPE;
+  3      v_full_name VARCHAR2(61);
+  4      v_grade CHAR(1);
+  5      v_credits NUMBER;
+  6      v_grade_points NUMBER;
+  7      v_total_credits NUMBER;
+  8      v_gpa NUMBER;
+  9  
+ 10      CURSOR student_cursor IS
+ 11          SELECT s.s_id, s.s_first || ' ' || s.s_last AS full_name
+ 12          FROM student s
+ 13          INNER JOIN enrollment e ON s.s_id = e.s_id
+ 14          WHERE e.grade IS NOT NULL
+ 15          GROUP BY s.s_id, s.s_first, s.s_last;
+ 16  
+ 17      CURSOR gpa_cursor (p_s_id student.s_id%TYPE) IS
+ 18          SELECT c.credits, e.grade
+ 19          FROM course_section cs
+ 20          JOIN course c ON cs.course_no = c.course_no
+ 21          JOIN enrollment e ON cs.c_sec_id = e.c_sec_id
+ 22          WHERE e.s_id = p_s_id AND e.grade IS NOT NULL;
+ 23  
+ 24  BEGIN
+ 25      FOR r_student IN student_cursor LOOP
+ 26          v_total_credits := 0;
+ 27          v_grade_points := 0;
+ 28  
+ 29          FOR r_grade IN gpa_cursor(r_student.s_id) LOOP
+ 30              v_credits := r_grade.credits;
+ 31              v_grade := r_grade.grade;
+ 32  
+ 33              v_grade_points := v_grade_points + (v_credits * 
+ 34                  CASE v_grade
+ 35                      WHEN 'A' THEN 4
+ 36                      WHEN 'B' THEN 3
+ 37                      WHEN 'C' THEN 2
+ 38                      WHEN 'D' THEN 1
+ 39                      WHEN 'F' THEN 0
+ 40                      ELSE 0
+ 41                  END);
+ 42              v_total_credits := v_total_credits + v_credits;
+ 43          END LOOP;
+ 44  
+ 45          IF v_total_credits > 0 THEN
+ 46              v_gpa := v_grade_points / v_total_credits;
+ 47              DBMS_OUTPUT.PUT_LINE('Student: ' || r_student.full_name || ' | s_id = ' || r_student.s_id || ' | GPA: ' || TO_CHAR(v_gpa, 'FM9990.99'));
+ 48          ELSE
+ 49              DBMS_OUTPUT.PUT_LINE('Student: ' || r_student.full_name || ' | s_id = ' || r_student.s_id || ' | has no credited courses.');
+ 50          END IF;
+ 51      END LOOP;
+ 52  
+ 53  EXCEPTION
+ 54      WHEN NO_DATA_FOUND THEN
+ 55          DBMS_OUTPUT.PUT_LINE('No data found.');
+ 56      WHEN TOO_MANY_ROWS THEN
+ 57          DBMS_OUTPUT.PUT_LINE('Too many rows returned.');
+ 58      WHEN ZERO_DIVIDE THEN
+ 59          DBMS_OUTPUT.PUT_LINE('Attempt to divide by zero.');
+ 60      WHEN OTHERS THEN
+ 61          DBMS_OUTPUT.PUT_LINE('Unexpected error: ' || SQLERRM);
+ 62  END calculate_gpa;
+
+Procedure CALCULATE_GPA compiled
+
+SQL> EXECUTE calculate_gpa;
+Student: Tammy Jones | s_id = JO100 | GPA: 3.5
+Student: John Marsh | s_id = MA100 | GPA: 2.
+Student: Lisa Johnson | s_id = JO101 | GPA: 2.33
+Student: Jorge Perez | s_id = PE100 | GPA: 3.
+
+
+PL/SQL procedure successfully completed.
+
+SQL> SPOOL OFF;

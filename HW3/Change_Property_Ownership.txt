@@ -1,0 +1,46 @@
+-- Author: Jike Lu
+-- Procedure: Change_Property_Ownership
+-- Description: This procedure changes the ownership of a property from one PrivateOwner to another.
+
+CREATE OR REPLACE PROCEDURE Change_Property_Ownership (
+    p_propertyno IN propertyforrent.propertyno%TYPE,
+    p_old_ownerno IN privateowner.ownerno%TYPE,
+    p_new_ownerno IN privateowner.ownerno%TYPE
+)
+IS
+    v_count_property NUMBER;
+    v_count_old_owner NUMBER;
+    v_count_new_owner NUMBER;
+BEGIN
+    -- Check if the property with the given property number and old owner exists
+    SELECT COUNT(*) INTO v_count_property
+    FROM propertyforrent
+    WHERE propertyno = p_propertyno
+    AND ownerno = p_old_ownerno;
+
+    IF v_count_property = 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Invalid property number or old owner number.');
+    END IF;
+
+    -- Check if the new owner exists in the privateowner table
+    SELECT COUNT(*) INTO v_count_new_owner
+    FROM privateowner
+    WHERE ownerno = p_new_ownerno;
+
+    IF v_count_new_owner = 0 THEN
+        RAISE_APPLICATION_ERROR(-20002, 'New owner number does not exist.');
+    END IF;
+
+    -- Update the ownership of the property
+    UPDATE propertyforrent
+    SET ownerno = p_new_ownerno
+    WHERE propertyno = p_propertyno;
+
+    DBMS_OUTPUT.PUT_LINE('Property ' || p_propertyno || ' ownership has been changed from owner ' || p_old_ownerno || ' to owner ' || p_new_ownerno);
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('No property found with the specified property number and owner.');
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('An error occurred: ' || SQLERRM);
+END Change_Property_Ownership;
+/

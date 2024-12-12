@@ -1,0 +1,62 @@
+SET SERVEROUTPUT ON;
+
+CREATE OR REPLACE PROCEDURE display_branch_staff (
+    p_branch_number IN branch.branchno%TYPE,
+    p_city          IN branch.city%TYPE,
+    p_position      IN staff.position%TYPE
+) 
+IS
+    CURSOR branch_staff_cursor IS
+        SELECT b.branchno, b.city, b.street, s.staffno, s.fname, s.lname, s.position, s.salary
+        FROM branch b
+        LEFT JOIN staff s ON b.branchno = s.branchno
+        WHERE b.branchno = p_branch_number
+        AND b.city = p_city
+        AND (s.position = p_position OR s.position IS NULL);
+
+    v_branchno branch.branchno%TYPE;
+    v_city branch.city%TYPE;
+    v_street branch.street%TYPE;
+    v_staffno staff.staffno%TYPE;
+    v_fname staff.fname%TYPE;
+    v_lname staff.lname%TYPE;
+    v_position staff.position%TYPE;
+    v_salary staff.salary%TYPE;
+
+BEGIN
+    OPEN branch_staff_cursor;
+    
+    LOOP
+        FETCH branch_staff_cursor INTO v_branchno, v_city, v_street, v_staffno, v_fname, v_lname, v_position, v_salary;
+        EXIT WHEN branch_staff_cursor%NOTFOUND;
+
+        DBMS_OUTPUT.PUT_LINE('Branch No: ' || v_branchno || ', City: ' || v_city || ', Street: ' || v_street);
+        
+        IF v_staffno IS NOT NULL THEN
+            DBMS_OUTPUT.PUT_LINE('Staff No: ' || v_staffno || ', First Name: ' || v_fname || ', Last Name: ' || v_lname);
+            DBMS_OUTPUT.PUT_LINE('Position: ' || v_position || ', Salary: ' || v_salary);
+        ELSE
+            DBMS_OUTPUT.PUT_LINE('No staff assigned to this branch.');
+        END IF;
+    END LOOP;
+
+    CLOSE branch_staff_cursor;
+
+EXCEPTION
+    -- Handle predefined exceptions with custom messages
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('No data found for the given branch, city, or position.');
+    WHEN ZERO_DIVIDE THEN
+        DBMS_OUTPUT.PUT_LINE('A divide by zero error occurred.');
+    WHEN TOO_MANY_ROWS THEN
+        DBMS_OUTPUT.PUT_LINE('Too many rows returned for the query.');
+    WHEN INVALID_CURSOR THEN
+        DBMS_OUTPUT.PUT_LINE('The cursor is invalid.');
+    WHEN CURSOR_ALREADY_OPEN THEN
+        DBMS_OUTPUT.PUT_LINE('The cursor is already open.');
+
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('The PLSQL procedure executed by ' || USER || 
+                             ' returned an unhandled exception on ' || SYSDATE || '.');
+END display_branch_staff;
+/

@@ -1,0 +1,75 @@
+SQL> START "E:\ARDB\HW3\HW3_Q3_Lu.txt";
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> CREATE OR REPLACE PROCEDURE display_branch_staff (
+  2      p_branch_number IN branch.branchno%TYPE,
+  3      p_city          IN branch.city%TYPE,
+  4      p_position      IN staff.position%TYPE
+  5  ) 
+  6  IS
+  7      CURSOR branch_staff_cursor IS
+  8          SELECT b.branchno, b.city, b.street, s.staffno, s.fname, s.lname, s.position, s.salary
+  9          FROM branch b
+ 10          LEFT JOIN staff s ON b.branchno = s.branchno
+ 11          WHERE b.branchno = p_branch_number
+ 12          AND b.city = p_city
+ 13          AND (s.position = p_position OR s.position IS NULL);
+ 14  
+ 15      v_branchno branch.branchno%TYPE;
+ 16      v_city branch.city%TYPE;
+ 17      v_street branch.street%TYPE;
+ 18      v_staffno staff.staffno%TYPE;
+ 19      v_fname staff.fname%TYPE;
+ 20      v_lname staff.lname%TYPE;
+ 21      v_position staff.position%TYPE;
+ 22      v_salary staff.salary%TYPE;
+ 23  
+ 24  BEGIN
+ 25      OPEN branch_staff_cursor;
+ 26  
+ 27      LOOP
+ 28          FETCH branch_staff_cursor INTO v_branchno, v_city, v_street, v_staffno, v_fname, v_lname, v_position, v_salary;
+ 29          EXIT WHEN branch_staff_cursor%NOTFOUND;
+ 30  
+ 31          DBMS_OUTPUT.PUT_LINE('Branch No: ' || v_branchno || ', City: ' || v_city || ', Street: ' || v_street);
+ 32  
+ 33          IF v_staffno IS NOT NULL THEN
+ 34              DBMS_OUTPUT.PUT_LINE('Staff No: ' || v_staffno || ', First Name: ' || v_fname || ', Last Name: ' || v_lname);
+ 35              DBMS_OUTPUT.PUT_LINE('Position: ' || v_position || ', Salary: ' || v_salary);
+ 36          ELSE
+ 37              DBMS_OUTPUT.PUT_LINE('No staff assigned to this branch.');
+ 38          END IF;
+ 39      END LOOP;
+ 40  
+ 41      CLOSE branch_staff_cursor;
+ 42  
+ 43  EXCEPTION
+ 44      -- Handle predefined exceptions with custom messages
+ 45      WHEN NO_DATA_FOUND THEN
+ 46          DBMS_OUTPUT.PUT_LINE('No data found for the given branch, city, or position.');
+ 47      WHEN ZERO_DIVIDE THEN
+ 48          DBMS_OUTPUT.PUT_LINE('A divide by zero error occurred.');
+ 49      WHEN TOO_MANY_ROWS THEN
+ 50          DBMS_OUTPUT.PUT_LINE('Too many rows returned for the query.');
+ 51      WHEN INVALID_CURSOR THEN
+ 52          DBMS_OUTPUT.PUT_LINE('The cursor is invalid.');
+ 53      WHEN CURSOR_ALREADY_OPEN THEN
+ 54          DBMS_OUTPUT.PUT_LINE('The cursor is already open.');
+ 55  
+ 56      WHEN OTHERS THEN
+ 57          DBMS_OUTPUT.PUT_LINE('The PLSQL procedure executed by ' || USER || 
+ 58                               ' returned an unhandled exception on ' || SYSDATE || '.');
+ 59  END display_branch_staff;
+ 60  /
+
+Procedure DISPLAY_BRANCH_STAFF compiled
+
+SQL> EXEC display_branch_staff('B003', 'Glasgow', 'Supervisor');
+Branch No: B003, City: Glasgow, Street: 163 Main St.
+Staff No: SG14, First Name: David, Last Name: Ford
+Position: Supervisor, Salary: 18000
+
+
+PL/SQL procedure successfully completed.
+
+SQL> SPOOL OFF;

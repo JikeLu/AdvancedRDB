@@ -1,0 +1,20 @@
+SET SERVEROUTPUT ON;
+
+DECLARE
+    v_Pi NUMBER := 3.1415926;
+    v_Current_radius NUMBER := 8;
+    v_Circumference NUMBER;
+    v_Area NUMBER;
+BEGIN
+    -- Calculate the circumference of the circle
+    v_Circumference := 2 * v_Pi * v_Current_radius;
+
+    -- Calculate the area of the circle
+    v_Area := v_Pi * v_Current_radius * v_Current_radius;
+
+    -- Output the results
+    DBMS_OUTPUT.PUT_LINE('For a circle with a radius of ' || v_Current_radius || 
+                         ', the circumference is ' || v_Circumference || 
+                         ' and the area is ' || v_Area || '.');
+END;
+/

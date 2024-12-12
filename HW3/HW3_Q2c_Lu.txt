@@ -1,0 +1,41 @@
+SET SERVEROUTPUT ON;
+
+DECLARE
+    v_employee_start_date DATE := TO_DATE('07/15/2015', 'MM/DD/YYYY');
+    v_job_type CHAR(1) := 'A';
+    v_extra_merit BOOLEAN := TRUE;
+    v_current_salary NUMBER := 61800;
+    
+    v_years_worked NUMBER;
+    v_base_bonus NUMBER := 0;
+    v_job_type_bonus NUMBER := 0;
+    v_extra_merit_bonus NUMBER := 0;
+    v_total_bonus NUMBER := 0;
+BEGIN
+    v_years_worked := TRUNC(MONTHS_BETWEEN(SYSDATE, v_employee_start_date) / 12);
+
+    IF v_years_worked BETWEEN 1 AND 8 THEN
+        v_base_bonus := 300;
+    ELSIF v_years_worked BETWEEN 9 AND 15 THEN
+        v_base_bonus := 400;
+    ELSIF v_years_worked BETWEEN 16 AND 20 THEN
+        v_base_bonus := 800;
+    ELSIF v_years_worked > 20 THEN
+        v_base_bonus := 1000;
+    END IF;
+
+    IF v_job_type = 'A' THEN
+        v_job_type_bonus := 300;
+    ELSIF v_job_type = 'B' THEN
+        v_job_type_bonus := 400;
+    END IF;
+
+    IF v_extra_merit THEN
+        v_extra_merit_bonus := v_current_salary * 0.05;
+    END IF;
+
+    v_total_bonus := v_base_bonus + v_job_type_bonus + v_extra_merit_bonus;
+
+    DBMS_OUTPUT.PUT_LINE('The bonus for this employee is <' || TO_CHAR(v_total_bonus, '999,999.99') || '>');
+END;
+/

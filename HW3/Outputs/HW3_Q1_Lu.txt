@@ -1,0 +1,27 @@
+SQL> START "E:\ARDB\HW3\HW3_Q1_Lu.txt";
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_Pi NUMBER := 3.1415926;
+  3      v_Current_radius NUMBER := 8;
+  4      v_Circumference NUMBER;
+  5      v_Area NUMBER;
+  6  BEGIN
+  7      -- Calculate the circumference of the circle
+  8      v_Circumference := 2 * v_Pi * v_Current_radius;
+  9  
+ 10      -- Calculate the area of the circle
+ 11      v_Area := v_Pi * v_Current_radius * v_Current_radius;
+ 12  
+ 13      -- Output the results
+ 14      DBMS_OUTPUT.PUT_LINE('For a circle with a radius of ' || v_Current_radius || 
+ 15                           ', the circumference is ' || v_Circumference || 
+ 16                           ' and the area is ' || v_Area || '.');
+ 17  END;
+ 18  /
+For a circle with a radius of 8, the circumference is 50.2654816 and the area is 201.0619264.
+
+
+PL/SQL procedure successfully completed.
+
+SQL> SPOOL OFF;

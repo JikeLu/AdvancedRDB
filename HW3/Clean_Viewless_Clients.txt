@@ -1,0 +1,13 @@
+CREATE OR REPLACE PROCEDURE Clean_Viewless_Clients
+IS
+BEGIN
+    DELETE FROM client
+    WHERE clientno NOT IN (SELECT clientno FROM viewing);
+
+    DBMS_OUTPUT.PUT_LINE('Clients who have not viewed any properties have been removed.');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('An error occurred while cleaning viewless clients: ' || SQLERRM);
+END Clean_Viewless_Clients;
+/
+

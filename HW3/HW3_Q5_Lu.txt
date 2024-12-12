@@ -1,0 +1,64 @@
+SET SERVEROUTPUT ON;
+
+CREATE OR REPLACE PROCEDURE calculate_gpa AS
+    v_s_id student.s_id%TYPE;
+    v_full_name VARCHAR2(61);
+    v_grade CHAR(1);
+    v_credits NUMBER;
+    v_grade_points NUMBER;
+    v_total_credits NUMBER;
+    v_gpa NUMBER;
+
+    CURSOR student_cursor IS
+        SELECT s.s_id, s.s_first || ' ' || s.s_last AS full_name
+        FROM student s
+        INNER JOIN enrollment e ON s.s_id = e.s_id
+        WHERE e.grade IS NOT NULL
+        GROUP BY s.s_id, s.s_first, s.s_last;
+
+    CURSOR gpa_cursor (p_s_id student.s_id%TYPE) IS
+        SELECT c.credits, e.grade
+        FROM course_section cs
+        JOIN course c ON cs.course_no = c.course_no
+        JOIN enrollment e ON cs.c_sec_id = e.c_sec_id
+        WHERE e.s_id = p_s_id AND e.grade IS NOT NULL;
+
+BEGIN
+    FOR r_student IN student_cursor LOOP
+        v_total_credits := 0;
+        v_grade_points := 0;
+
+        FOR r_grade IN gpa_cursor(r_student.s_id) LOOP
+            v_credits := r_grade.credits;
+            v_grade := r_grade.grade;
+
+            v_grade_points := v_grade_points + (v_credits * 
+                CASE v_grade
+                    WHEN 'A' THEN 4
+                    WHEN 'B' THEN 3
+                    WHEN 'C' THEN 2
+                    WHEN 'D' THEN 1
+                    WHEN 'F' THEN 0
+                    ELSE 0
+                END);
+            v_total_credits := v_total_credits + v_credits;
+        END LOOP;
+
+        IF v_total_credits > 0 THEN
+            v_gpa := v_grade_points / v_total_credits;
+            DBMS_OUTPUT.PUT_LINE('Student: ' || r_student.full_name || ' | s_id = ' || r_student.s_id || ' | GPA: ' || TO_CHAR(v_gpa, 'FM9990.99'));
+        ELSE
+            DBMS_OUTPUT.PUT_LINE('Student: ' || r_student.full_name || ' | s_id = ' || r_student.s_id || ' | has no credited courses.');
+        END IF;
+    END LOOP;
+
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('No data found.');
+    WHEN TOO_MANY_ROWS THEN
+        DBMS_OUTPUT.PUT_LINE('Too many rows returned.');
+    WHEN ZERO_DIVIDE THEN
+        DBMS_OUTPUT.PUT_LINE('Attempt to divide by zero.');
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Unexpected error: ' || SQLERRM);
+END calculate_gpa;

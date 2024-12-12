@@ -1,0 +1,142 @@
+SQL> START "E:\ARDB\HW3\HW3_Q2a_Lu.txt";
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_employee_start_date DATE := TO_DATE('05/01/2010', 'MM/DD/YYYY');
+  3      v_job_type CHAR(1) := 'A';
+  4      v_extra_merit BOOLEAN := FALSE;
+  5      v_current_salary NUMBER := 55750;
+  6  
+  7      v_years_worked NUMBER;
+  8      v_base_bonus NUMBER := 0;
+  9      v_job_type_bonus NUMBER := 0;
+ 10      v_extra_merit_bonus NUMBER := 0;
+ 11      v_total_bonus NUMBER := 0;
+ 12  BEGIN
+ 13      v_years_worked := TRUNC(MONTHS_BETWEEN(SYSDATE, v_employee_start_date) / 12);
+ 14  
+ 15      IF v_years_worked BETWEEN 1 AND 8 THEN
+ 16          v_base_bonus := 300;
+ 17      ELSIF v_years_worked BETWEEN 9 AND 15 THEN
+ 18          v_base_bonus := 400;
+ 19      ELSIF v_years_worked BETWEEN 16 AND 20 THEN
+ 20          v_base_bonus := 800;
+ 21      ELSIF v_years_worked > 20 THEN
+ 22          v_base_bonus := 1000;
+ 23      END IF;
+ 24  
+ 25      IF v_job_type = 'A' THEN
+ 26          v_job_type_bonus := 300;
+ 27      ELSIF v_job_type = 'B' THEN
+ 28          v_job_type_bonus := 400;
+ 29      END IF;
+ 30  
+ 31      IF v_extra_merit THEN
+ 32          v_extra_merit_bonus := v_current_salary * 0.05;
+ 33      END IF;
+ 34  
+ 35      v_total_bonus := v_base_bonus + v_job_type_bonus + v_extra_merit_bonus;
+ 36  
+ 37      DBMS_OUTPUT.PUT_LINE('The bonus for this employee is <' || TO_CHAR(v_total_bonus, '999,999.99') || '>');
+ 38  END;
+ 39  /
+The bonus for this employee is <     700.00>
+
+
+PL/SQL procedure successfully completed.
+
+SQL> START "E:\ARDB\HW3\HW3_Q2b_Lu.txt";
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_employee_start_date DATE := TO_DATE('01/05/2000', 'MM/DD/YYYY');
+  3      v_job_type CHAR(1) := 'B';
+  4      v_extra_merit BOOLEAN := TRUE;
+  5      v_current_salary NUMBER := 75500;
+  6  
+  7      v_years_worked NUMBER;
+  8      v_base_bonus NUMBER := 0;
+  9      v_job_type_bonus NUMBER := 0;
+ 10      v_extra_merit_bonus NUMBER := 0;
+ 11      v_total_bonus NUMBER := 0;
+ 12  BEGIN
+ 13      v_years_worked := TRUNC(MONTHS_BETWEEN(SYSDATE, v_employee_start_date) / 12);
+ 14  
+ 15      IF v_years_worked BETWEEN 1 AND 8 THEN
+ 16          v_base_bonus := 300;
+ 17      ELSIF v_years_worked BETWEEN 9 AND 15 THEN
+ 18          v_base_bonus := 400;
+ 19      ELSIF v_years_worked BETWEEN 16 AND 20 THEN
+ 20          v_base_bonus := 800;
+ 21      ELSIF v_years_worked > 20 THEN
+ 22          v_base_bonus := 1000;
+ 23      END IF;
+ 24  
+ 25      IF v_job_type = 'A' THEN
+ 26          v_job_type_bonus := 300;
+ 27      ELSIF v_job_type = 'B' THEN
+ 28          v_job_type_bonus := 400;
+ 29      END IF;
+ 30  
+ 31      IF v_extra_merit THEN
+ 32          v_extra_merit_bonus := v_current_salary * 0.05;
+ 33      END IF;
+ 34  
+ 35      v_total_bonus := v_base_bonus + v_job_type_bonus + v_extra_merit_bonus;
+ 36  
+ 37      DBMS_OUTPUT.PUT_LINE('The bonus for this employee is <' || TO_CHAR(v_total_bonus, '999,999.99') || '>');
+ 38  END;
+ 39  /
+The bonus for this employee is <   5,175.00>
+
+
+PL/SQL procedure successfully completed.
+
+SQL> START "E:\ARDB\HW3\HW3_Q2c_Lu.txt";
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_employee_start_date DATE := TO_DATE('07/15/2015', 'MM/DD/YYYY');
+  3      v_job_type CHAR(1) := 'A';
+  4      v_extra_merit BOOLEAN := TRUE;
+  5      v_current_salary NUMBER := 61800;
+  6  
+  7      v_years_worked NUMBER;
+  8      v_base_bonus NUMBER := 0;
+  9      v_job_type_bonus NUMBER := 0;
+ 10      v_extra_merit_bonus NUMBER := 0;
+ 11      v_total_bonus NUMBER := 0;
+ 12  BEGIN
+ 13      v_years_worked := TRUNC(MONTHS_BETWEEN(SYSDATE, v_employee_start_date) / 12);
+ 14  
+ 15      IF v_years_worked BETWEEN 1 AND 8 THEN
+ 16          v_base_bonus := 300;
+ 17      ELSIF v_years_worked BETWEEN 9 AND 15 THEN
+ 18          v_base_bonus := 400;
+ 19      ELSIF v_years_worked BETWEEN 16 AND 20 THEN
+ 20          v_base_bonus := 800;
+ 21      ELSIF v_years_worked > 20 THEN
+ 22          v_base_bonus := 1000;
+ 23      END IF;
+ 24  
+ 25      IF v_job_type = 'A' THEN
+ 26          v_job_type_bonus := 300;
+ 27      ELSIF v_job_type = 'B' THEN
+ 28          v_job_type_bonus := 400;
+ 29      END IF;
+ 30  
+ 31      IF v_extra_merit THEN
+ 32          v_extra_merit_bonus := v_current_salary * 0.05;
+ 33      END IF;
+ 34  
+ 35      v_total_bonus := v_base_bonus + v_job_type_bonus + v_extra_merit_bonus;
+ 36  
+ 37      DBMS_OUTPUT.PUT_LINE('The bonus for this employee is <' || TO_CHAR(v_total_bonus, '999,999.99') || '>');
+ 38  END;
+ 39  /
+The bonus for this employee is <   3,790.00>
+
+
+PL/SQL procedure successfully completed.
+
+SQL> SPOOL OFF;
