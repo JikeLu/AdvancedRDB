@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="6F9CD8B7-7922-A2D3-180E-F2C85F3C467C" name="Manager">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:31:30 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="StaffID" id="586D97BC-8293-C480-B98B-085B520F3F99">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:31:35 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C63FD9F5-425F-1EC5-585C-478D5EB0AFEA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="BranchID" id="FA52CBB2-4C7E-FC6E-527C-49F17260702B">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:38:06 UTC</createdTime>
+<generatorID>E5309D7D-E04A-9D81-FB76-55BAC79D564D</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<referedAttribute>4C4201A6-58BB-F410-F898-9D5E15B3CF28</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C63FD9F5-425F-1EC5-585C-478D5EB0AFEA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="73081E7F-17CF-FA72-A791-6E0D1D9BC0F9" name="Manager PK">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:33:52 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>586D97BC-8293-C480-B98B-085B520F3F99</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

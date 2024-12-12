@@ -1,0 +1,135 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BFCB6BAB-C1A8-D5C5-87D0-3A86D9D14CA2" name="Branch">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>E8AA8316-9332-6F8C-227E-DC16D71E052E</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="BranchID" id="9BEDEE7C-CE04-FB06-E8DE-7A0A43EC3410">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>4C4201A6-58BB-F410-F898-9D5E15B3CF28</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C63FD9F5-425F-1EC5-585C-478D5EB0AFEA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Street" id="8287DB74-1AE1-4F79-B46F-F46E92A143D2">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>A64941D9-1149-4A19-6526-D7F3248F339E</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>DBD05EAD-49F1-DC8A-B290-62BA2107BFDC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="City" id="E99B9441-A1FE-CCDA-9A06-6A37FDFBDB49">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>7213C186-BE59-25FD-DA3C-D2873BB4FB7E</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>BF598E60-EC82-733F-72C5-1AAA34A9AEFA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="State" id="9321971E-9495-FE04-4606-C6FEF202EFC4">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>F3BFC89A-D713-F802-6FDC-F05853B40D8F</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>A86D302C-A20C-D011-06B8-491522D446C0</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Zip" id="D938D17C-8F42-A1BA-3F2D-6363E6CC3259">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>45AF351E-E2CF-4A4D-3C4B-36185067A29B</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>97CE29D9-6EC2-932B-829C-0C41297D3FB8</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PhoneNumber" id="9669B776-3A6A-2868-74E8-DE246DF2963C">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>B971977B-3690-3E2D-4FD4-7BDCA056CDF3</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Manager_StaffID" id="67A93BAD-CA79-5CE8-900F-888E1F2EE03E">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>7467B5E6-8D46-E261-8AE6-9571B165428C</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C63FD9F5-425F-1EC5-585C-478D5EB0AFEA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D95AC6AE-EFB7-69AE-C00B-61327DC6A9E8" referredColumn="500DF5D3-6D3C-C649-0FC7-30EC48EEDBFA"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3BCE161F-E818-BC8B-9495-37E244CE2509" name="Branch_PK">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>F22E1874-2C90-B0CC-588B-CA64AA2B2E57</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9BEDEE7C-CE04-FB06-E8DE-7A0A43EC3410"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8643005B-6EC6-9D80-14AA-628A68CD796F" name="Branch__IDX">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>E5309D7D-E04A-9D81-FB76-55BAC79D564D</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="67A93BAD-CA79-5CE8-900F-888E1F2EE03E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="23F01652-9DE0-502C-5F6C-A19A38C47716" name="Branch_Manager_FK">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>E5309D7D-E04A-9D81-FB76-55BAC79D564D</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="67A93BAD-CA79-5CE8-900F-888E1F2EE03E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

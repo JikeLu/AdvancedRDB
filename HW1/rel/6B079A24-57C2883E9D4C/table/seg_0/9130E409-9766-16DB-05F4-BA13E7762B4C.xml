@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9130E409-9766-16DB-05F4-BA13E7762B4C" name="Manager">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>6F9CD8B7-7922-A2D3-180E-F2C85F3C467C</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="StaffID" id="500DF5D3-6D3C-C649-0FC7-30EC48EEDBFA">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>586D97BC-8293-C480-B98B-085B520F3F99</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C63FD9F5-425F-1EC5-585C-478D5EB0AFEA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Branch_BranchID" id="4380E45E-460D-C0F6-AAC4-6B1D7E03D084">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>FA52CBB2-4C7E-FC6E-527C-49F17260702B</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C63FD9F5-425F-1EC5-585C-478D5EB0AFEA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1C1FDBEC-6A96-92B1-324F-7A8AF4E7EE37" referredColumn="9BEDEE7C-CE04-FB06-E8DE-7A0A43EC3410"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C2A9BA04-135D-5430-8659-145BCB9818EB" name="Manager_PK">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>73081E7F-17CF-FA72-A791-6E0D1D9BC0F9</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="500DF5D3-6D3C-C649-0FC7-30EC48EEDBFA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6A98E41E-6631-9DC7-E060-A275BA50FA17" name="Manager__IDX">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>E5309D7D-E04A-9D81-FB76-55BAC79D564D</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="4380E45E-460D-C0F6-AAC4-6B1D7E03D084"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="934C5088-1699-2355-B5A6-134588319298" name="Manager_Branch_FK">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>E5309D7D-E04A-9D81-FB76-55BAC79D564D</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4380E45E-460D-C0F6-AAC4-6B1D7E03D084"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

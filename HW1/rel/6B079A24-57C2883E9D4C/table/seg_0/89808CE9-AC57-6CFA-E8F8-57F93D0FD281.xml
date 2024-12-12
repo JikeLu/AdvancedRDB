@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="89808CE9-AC57-6CFA-E8F8-57F93D0FD281" name="Staff">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>32100C6A-13D9-5D9A-02D6-205696B3E4EC</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="StaffID" id="0B9008FC-29D6-5943-571E-9EB9A83389F6">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>222B9E8F-2517-71FE-CCBC-57C16E85D76D</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C63FD9F5-425F-1EC5-585C-478D5EB0AFEA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="C7D896D8-BA35-6720-4F20-64A78D9D796B">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>69EBF94C-5025-D343-E2B7-2E5A5903DF7E</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>B244AA77-3B82-5ACF-E04B-D8CAF1BC4AF7</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Position" id="6377A994-C26B-5B60-E417-047A063FB4BF">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>5DA4E25B-DB41-78CD-2628-DAE10FC07549</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>5B48C91E-4D6B-7802-6F83-6052CBD4E135</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Salary" id="843E84E9-2482-94A1-A5E3-47B5E4A24BC0">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>8D6B77AE-2FAD-F4DD-DD0B-B59EFDEAE25E</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Branch_BranchID" id="1F847384-AF7B-5F89-8387-F6C45523E8EB">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>106E3C3F-94F9-6C5F-4CD8-6A969D63DF1B</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C63FD9F5-425F-1EC5-585C-478D5EB0AFEA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="340A0F0E-2AB8-95EB-0A82-E608CF821DEB" referredColumn="9BEDEE7C-CE04-FB06-E8DE-7A0A43EC3410"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D4669BF3-13A7-6D83-1C51-562F4D7F733E" name="Staff_PK">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>C717D0EC-27BC-FDDC-79B0-5BF2B79C7B31</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0B9008FC-29D6-5943-571E-9EB9A83389F6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9D4A6795-1467-5837-E553-5E8E6239E04D" name="Staff_Branch_FK">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>2567B238-D343-655E-D662-0BAA1F08104F</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1F847384-AF7B-5F89-8387-F6C45523E8EB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

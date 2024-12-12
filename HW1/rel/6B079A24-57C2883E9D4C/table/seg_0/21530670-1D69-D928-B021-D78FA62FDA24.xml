@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="21530670-1D69-D928-B021-D78FA62FDA24" name="Rental">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>A6E096F5-FE59-D002-CD03-C9759E848827</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="RentalNumber" id="D67478AC-6F7A-3946-379C-598F38EE0BA4">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>54A15299-F42D-2660-6584-784D785B4086</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C63FD9F5-425F-1EC5-585C-478D5EB0AFEA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="RenntalDate" id="09A2FF7B-0D72-2659-FE49-984B36B9A445">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>310E76D4-5F39-75D2-B533-C6944AB2CE14</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ReturnDate" id="2B9964B2-F51D-B3A3-C28B-3A29ED471E16">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>DCB11D78-05BE-92D4-83B9-46A57F310E35</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DailyRental" id="43E90E48-DA2D-6150-81B8-1BDB33FCE7D5">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>4C5A5A4B-C6CA-54FB-A27A-072841D9E9BD</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Member_MemberID" id="861A1917-7D1A-5DBD-DD65-0CE345BE930A">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>8D4A0345-5A8B-9264-3634-24D6E62BD459</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C63FD9F5-425F-1EC5-585C-478D5EB0AFEA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F687361D-D8DC-3983-F74A-73E47091985F" referredColumn="88F5E9C8-03DD-7C5D-6D06-B63E3D8595C8"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="79AF29B0-274C-F0B4-5876-191C4A30F3B1" name="Rental_PK">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>D80E8AAA-B610-0CE9-D5B7-60CD465644AA</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D67478AC-6F7A-3946-379C-598F38EE0BA4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E1E3453A-0E4F-77F8-43CD-027D80B72972" name="Rental_Member_FK">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>F874F332-2F06-0C20-BE7D-C54F16078699</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="861A1917-7D1A-5DBD-DD65-0CE345BE930A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

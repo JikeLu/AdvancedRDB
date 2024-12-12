@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E8AA8316-9332-6F8C-227E-DC16D71E052E" name="Branch">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:15:48 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="BranchID" id="4C4201A6-58BB-F410-F898-9D5E15B3CF28">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:16:02 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C63FD9F5-425F-1EC5-585C-478D5EB0AFEA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Street" id="A64941D9-1149-4A19-6526-D7F3248F339E">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:17:05 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>DBD05EAD-49F1-DC8A-B290-62BA2107BFDC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="City" id="7213C186-BE59-25FD-DA3C-D2873BB4FB7E">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:19:32 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>BF598E60-EC82-733F-72C5-1AAA34A9AEFA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="State" id="F3BFC89A-D713-F802-6FDC-F05853B40D8F">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:19:48 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>A86D302C-A20C-D011-06B8-491522D446C0</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Zip" id="45AF351E-E2CF-4A4D-3C4B-36185067A29B">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:19:54 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>97CE29D9-6EC2-932B-829C-0C41297D3FB8</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PhoneNumber" id="B971977B-3690-3E2D-4FD4-7BDCA056CDF3">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:20:06 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="StaffID" id="7467B5E6-8D46-E261-8AE6-9571B165428C">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:15:56 UTC</createdTime>
+<generatorID>E5309D7D-E04A-9D81-FB76-55BAC79D564D</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<referedAttribute>586D97BC-8293-C480-B98B-085B520F3F99</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C63FD9F5-425F-1EC5-585C-478D5EB0AFEA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="F22E1874-2C90-B0CC-588B-CA64AA2B2E57" name="Branch PK">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:16:21 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4C4201A6-58BB-F410-F898-9D5E15B3CF28</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

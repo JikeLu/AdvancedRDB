@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="B77B8A99-314A-9195-DD5C-1290F0A92839" containerWithKeyObject="74A9589A-4A2E-AB41-FE8A-022FE987C0A8" localFKIndex="EFE8798D-F55A-3523-8A74-766FB85EA937" name="DVD_Copies_Branch_FK">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>2BF2EBC7-244C-2705-6FA2-E2CB66BC34B9</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<referredTableLongName>Branch</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>BFCB6BAB-C1A8-D5C5-87D0-3A86D9D14CA2</referredTableID>
+<keyObject>3BCE161F-E818-BC8B-9495-37E244CE2509</keyObject>
+<referredKeyID>3BCE161F-E818-BC8B-9495-37E244CE2509</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>BranchID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

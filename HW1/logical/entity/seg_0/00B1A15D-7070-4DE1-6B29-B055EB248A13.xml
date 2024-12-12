@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="00B1A15D-7070-4DE1-6B29-B055EB248A13" name="DVD_Catalog">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:40:27 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="CatalogNumber" id="DC9366CB-93F1-4BCA-4307-6E5AFB03A251">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:41:07 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C63FD9F5-425F-1EC5-585C-478D5EB0AFEA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Title" id="AA259103-7705-0E85-F339-2F3544431F5E">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:41:30 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>5B48C91E-4D6B-7802-6F83-6052CBD4E135</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Category" id="F664CB1D-F356-9CA2-094A-C6A6A55FDEAC">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:41:41 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Director" id="D02FDED6-9406-C06D-3223-772F4E57E348">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:42:05 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>B244AA77-3B82-5ACF-E04B-D8CAF1BC4AF7</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="MainActors" id="26EE72D4-A35E-F8FB-8CD9-F5CA019F5283">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:42:21 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>B244AA77-3B82-5ACF-E04B-D8CAF1BC4AF7</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Cost" id="2E178D8E-2E97-8A19-CC6E-5C807117EC21">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:42:36 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>11</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,11,2</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="18E2D07B-2245-CCAD-2183-DA2B898D7B5A" name="DVD_Catalog PK">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:41:15 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>DC9366CB-93F1-4BCA-4307-6E5AFB03A251</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

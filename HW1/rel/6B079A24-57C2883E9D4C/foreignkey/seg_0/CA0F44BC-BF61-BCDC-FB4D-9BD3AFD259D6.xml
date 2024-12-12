@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="CA0F44BC-BF61-BCDC-FB4D-9BD3AFD259D6" containerWithKeyObject="74A9589A-4A2E-AB41-FE8A-022FE987C0A8" localFKIndex="2ACA1E70-9BC4-38CA-550E-84635E82C127" name="DVD_Copies_DVD_Catalog_FK">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 02:20:32 UTC</createdTime>
+<generatorID>27D25502-E992-108D-5E08-D91438A116F8</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<referredTableLongName>DVD_Catalog</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>2D8D5942-12BD-C58E-A697-F5031F6C2EF2</referredTableID>
+<keyObject>DBD10EF8-6BB4-63FA-561A-C433E8F44D1B</keyObject>
+<referredKeyID>DBD10EF8-6BB4-63FA-561A-C433E8F44D1B</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>CatalogNumber</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,112 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D07A6523-8F60-2E23-B275-3717FF51026F" name="Member">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:56:24 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="MemberID" id="F8EB757D-7365-857D-418E-F5367278FFB9">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:56:35 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C63FD9F5-425F-1EC5-585C-478D5EB0AFEA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="FirstName" id="74989F70-38C0-95F5-5320-AABE4CD11AA1">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:56:48 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>B244AA77-3B82-5ACF-E04B-D8CAF1BC4AF7</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="LastName" id="FE604C84-EE65-AF52-A378-844EE94C59DB">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:56:59 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>B244AA77-3B82-5ACF-E04B-D8CAF1BC4AF7</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Address" id="8345755C-D67C-DBB4-F285-FD93094CEEB7">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:57:08 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>DBD05EAD-49F1-DC8A-B290-62BA2107BFDC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="RegistrationDate" id="3076FCBB-B779-17EE-6AE5-AF3FB9B503E0">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:57:16 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="BranchID" id="BB491D88-2483-446A-CE5C-57BFA73C424E">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:58:59 UTC</createdTime>
+<generatorID>BA8A6331-54C0-0C78-286E-A20E2D0A5629</generatorID>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>4C4201A6-58BB-F410-F898-9D5E15B3CF28</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C63FD9F5-425F-1EC5-585C-478D5EB0AFEA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E7829FA2-DBE2-15E9-F1F8-0FE7F4D4171C" name="Member PK">
+<createdBy>JkL</createdBy>
+<createdTime>2024-09-09 01:56:46 UTC</createdTime>
+<ownerDesignName>HW1</ownerDesignName>
+<engineerTo>
+<item key="6B079A24-1C7B-85BF-98E2-57C2883E9D4C" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>F8EB757D-7365-857D-418E-F5367278FFB9</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
