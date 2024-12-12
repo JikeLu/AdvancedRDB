@@ -1,0 +1,30 @@
+REM This file is part of the server triggers lab. 
+REM This file is used to insert data into the repairs table
+REM It tests trigger check_daily_num_jobs_per_mech
+REM in file serv_trig2.txt
+
+CREATE OR REPLACE PROCEDURE temp_test1
+AS
+i   NUMBER;
+first_car_value NUMBER;
+first_mech_value NUMBER;
+
+BEGIN
+ INSERT INTO mechanics VALUES(mech_sequence.NEXTVAL, 'Thomas Smith', 
+                             55000.00, 'Dodge Specialist');
+ INSERT INTO mechanics VALUES(mech_sequence.NEXTVAL, 'Sydney Li', 
+                             50000.00, 'BMW Specialist');
+ COMMIT;
+ FOR i IN 1..11 LOOP
+  INSERT INTO cars VALUES(car_sequence.NEXTVAL,'Dummy car', 
+'01-JAN-2018');
+ END LOOP;
+ COMMIT;
+ SELECT min(car_num) INTO first_car_value FROM cars;
+ SELECT min(mech_num) INTO first_mech_value FROM mechanics;
+ FOR i IN first_car_value..first_car_value+10 LOOP
+  INSERT INTO repairs values(first_mech_value,i,SYSDATE);
+  COMMIT;
+ END LOOP;
+END; 
+/

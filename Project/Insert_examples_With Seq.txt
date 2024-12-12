@@ -1,0 +1,48 @@
+INSERT INTO customers (attribute names)
+VALUES (
+    'C' || TO_CHAR(customer_id_seq.NEXTVAL, 'FM0000'),
+    other attributes
+);
+
+INSERT INTO lot (attribute names)
+VALUES (
+    lot_id_seq.NEXTVAL, 
+    other attributes
+);
+
+INSERT INTO house (attribute names)
+VALUES (
+    'H' || TO_CHAR(house_id_seq.NEXTVAL),
+    other attributes
+);
+
+INSERT INTO decor_choice (attribute names)
+VALUES (
+    'D' || TO_CHAR(decorator_id_seq.NEXTVAL, 'FM000'),
+    other attributes
+);
+
+INSERT INTO const_prog (attribute names)
+VALUES (
+    'PRG' || TO_CHAR(progress_id_seq.NEXTVAL, 'FM000'),
+    other attributes
+);
+
+INSERT INTO sales_contract (attribute names)
+VALUES (
+    'SC' || TO_CHAR(sales_contract_id_seq.NEXTVAL, 'FM000'),
+    other attributes
+);
+
+INSERT INTO bank (attribute names)
+VALUES (
+    'B' || TO_CHAR(sales_contract_id_seq.NEXTVAL, 'FM000'),
+    other attributes
+);
+
+INSERT INTO style (attribute names)
+VALUES (
+    'st' || TO_CHAR(progress_id_seq.NEXTVAL),
+    other attributes
+);
+

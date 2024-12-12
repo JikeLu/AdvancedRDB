@@ -1,0 +1,31 @@
+REM This file is part of PL/SQL lab 4 in 95-736
+REM This file contains a stand-alone procedure called car_info_by_make
+REM that lists information about all cars in the database 
+REM of a certain make. The procedure uses an IN parameter: car_make. 
+REM NOTE how we parametrize the cursor to fetch rows of information
+REM about the car make required.
+
+CREATE OR REPLACE PROCEDURE car_info_by_make(car_make IN
+cars.car_model%TYPE)
+ AS
+ car_record cars%ROWTYPE;
+ CURSOR c1 (car_make1 cars.car_model%TYPE) is
+ SELECT * FROM cars
+ WHERE cars.car_model LIKE '%'||car_make1||'%';
+ BEGIN
+ OPEN c1(car_make);
+ DBMS_OUTPUT.PUT(' '||'NUMBER'||' '||'MODEL'||' '||'YEAR
+');
+ DBMS_OUTPUT.NEW_LINE;
+ LOOP
+ FETCH c1 INTO car_record;
+ EXIT WHEN c1%NOTFOUND;
+ DBMS_OUTPUT.NEW_LINE;
+ DBMS_OUTPUT.PUT(' '||car_record.car_num||' '||
+ car_record.car_model||' '||
+ car_record.car_year);
+ DBMS_OUTPUT.NEW_LINE;
+ END LOOP;
+ CLOSE c1;
+ END;
+/

@@ -1,0 +1,42 @@
+REM This file is part of PL/SQL lab 4 in 95-736
+REM This file contains a stand-alone function called calc_num_jobs_
+REM for_model
+REM It calculates the number of repair jobs done
+REM in the last 3 years for a particular type of car 
+REM  The function has one parameter.
+REM The file also contains a procedure that calls the function and
+REM prints out the value returned
+
+CREATE OR REPLACE 
+FUNCTION calc_num_jobs_for_model(model IN cars.car_model%TYPE) RETURN NUMBER
+ AS
+num_jobs NUMBER:=0;
+ BEGIN
+   SELECT count(*) INTO num_jobs
+          FROM  repairs,cars
+         WHERE MONTHS_BETWEEN(SYSDATE, repairs.repair_date)
+            <=48
+         AND repairs.car_num=cars.car_num
+         AND cars.car_model LIKE '%'||model||'%';
+   RETURN num_jobs;
+ END;  
+/
+
+REM Make sure you type SET SERVEROUTPUT ON before running the procedure
+REM below
+
+CREATE OR REPLACE
+PROCEDURE print_jobs_model(model_par IN cars.car_model%TYPE)
+AS
+BEGIN
+  DBMS_OUTPUT.PUT('Number of repair jobs: '||
+                   calc_num_jobs_for_model(model_par));
+  DBMS_OUTPUT.NEW_LINE;
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+      DBMS_OUTPUT.PUT('No Jobs done!!');
+   WHEN OTHERS THEN
+      DBMS_OUTPUT.PUT('Some other exception occured');
+        
+END;
+/

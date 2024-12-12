@@ -1,0 +1,43 @@
+SQL> 
+SQL> SET ECHO ON;
+SQL> 
+SQL> SELECT lname, fname, propertyno AS pno, street from staff s, propertyforrent p WHERE s.staffno = p.staffno (+) Order by lname, fname;
+未选择任何行
+SQL> 
+SQL> SELECT clientno, lname, fname, maxrent, preftype FROM client where clientno not in (select clientno from viewing);
+
+CLIE LNAME                          FNAME                             MAXRENT PREFT
+---- ------------------------------ ------------------------------ ---------- -----
+CR56 Stewart                        Aline                                 350 Flat 
+CR74 Ritchie                        Mike                                  750 House
+CR62 Tregear                        Mary                                  600 Flat 
+CR76 Kay                            John                                  425 Flat 
+
+SQL> 
+SQL> SELECT propertyno AS pno, street
+  2  FROM propertyforrent p
+  3  WHERE propertyno IN
+  4  (SELECT v.propertyno
+  5  FROM viewing v
+  6  GROUP BY v.propertyno
+  7  HAVING count(v.propertyno) > 1);
+未选择任何行
+SQL> 
+SQL> select b.branchno, b.city, lname, position, salary,
+  2  type, rent
+  3  from branch b, staff s, propertyforrent p
+  4  where b.branchno = s.branchno(+) and
+  5  s.staffno = p.staffno (+)
+  6  order by b.branchno, lname;
+
+BRAN CITY       LNAME           POSITION       SALARY TYPE         RENT
+---- ---------- --------------- ---------- ---------- ------ ----------
+B002 London                                                            
+B003 Glasgow                                                           
+B004 Bristol                                                           
+B005 London                                                            
+B007 Aberdeen                                                          
+
+SQL> 
+SQL> 
+SQL> spool off;

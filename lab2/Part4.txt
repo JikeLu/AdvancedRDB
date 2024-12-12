@@ -1,0 +1,261 @@
+SQL> 
+SQL> SELECT p.propertyno, p.street, v.*
+  2  FROM propertyforrent p, viewing v
+  3  WHERE p.propertyno=v.propertyno;
+
+PROP STREET               CLIE PROP VIEWDATE  VIEW_COMMENT                                                
+---- -------------------- ---- ---- --------- ------------------------------------------------------------
+PA14 16 Holhead           CR56 PA14 24-MAY-13 too small                                                   
+PA14 16 Holhead           CR62 PA14 14-MAY-13 no dining room                                              
+PG4  6 Lawrence St.       CR76 PG4  20-APR-13 too remote                                                  
+PG4  6 Lawrence St.       CR56 PG4  26-MAY-13                                                             
+PG36 2 Manor Rd.          CR56 PG36 28-APR-13                                                             
+
+SQL> 
+SQL> SELECT propertyno, street, viewdate, view_comment
+  2  FROM propertyforrent NATURAL JOIN viewing;
+
+PROP STREET               VIEWDATE  VIEW_COMMENT                                                
+---- -------------------- --------- ------------------------------------------------------------
+PA14 16 Holhead           24-MAY-13 too small                                                   
+PA14 16 Holhead           14-MAY-13 no dining room                                              
+PG4  6 Lawrence St.       20-APR-13 too remote                                                  
+PG4  6 Lawrence St.       26-MAY-13                                                             
+PG36 2 Manor Rd.          28-APR-13                                                             
+
+SQL> 
+SQL> SELECT propertyno, street, viewdate, view_comment
+  2  FROM propertyforrent JOIN viewing USING (propertyno);
+
+PROP STREET               VIEWDATE  VIEW_COMMENT                                                
+---- -------------------- --------- ------------------------------------------------------------
+PA14 16 Holhead           24-MAY-13 too small                                                   
+PA14 16 Holhead           14-MAY-13 no dining room                                              
+PG4  6 Lawrence St.       20-APR-13 too remote                                                  
+PG4  6 Lawrence St.       26-MAY-13                                                             
+PG36 2 Manor Rd.          28-APR-13                                                             
+
+SQL> 
+SQL> SELECT p.propertyno, street, viewdate, view_comment
+  2  FROM propertyforrent p JOIN viewing v
+  3  ON p.propertyno = v.propertyno;
+
+PROP STREET               VIEWDATE  VIEW_COMMENT                                                
+---- -------------------- --------- ------------------------------------------------------------
+PA14 16 Holhead           24-MAY-13 too small                                                   
+PA14 16 Holhead           14-MAY-13 no dining room                                              
+PG4  6 Lawrence St.       20-APR-13 too remote                                                  
+PG4  6 Lawrence St.       26-MAY-13                                                             
+PG36 2 Manor Rd.          28-APR-13                                                             
+
+SQL> 
+SQL> SELECT fname, lname, position, salary, salary_range_id
+  2  FROM staff s, salary_range sr
+  3  WHERE s.salary between sr.low_salary and sr.high_salary
+  4  ORDER by 5;
+
+FNAME      LNAME           POSITION       SALARY SALARY_RANGE_ID
+---------- --------------- ---------- ---------- ---------------
+Mary       Howe            Assistant        9000               1
+Julie      Lee             Assistant        9000               1
+Ann        Beech           Assistant       12000               2
+David      Ford            Supervisor      18000               2
+Susan      Brand           Manager         24000               3
+John       White           Manager         30000               3
+
+6 rows selected. 
+
+SQL> 
+SQL> SELECT p.propertyno, p.street, v.*
+  2  FROM propertyforrent p, viewing v
+  3  WHERE p.propertyno=v.propertyno (+);
+
+PROP STREET               CLIE PROP VIEWDATE  VIEW_COMMENT                                                
+---- -------------------- ---- ---- --------- ------------------------------------------------------------
+PA14 16 Holhead           CR56 PA14 24-MAY-13 too small                                                   
+PG4  6 Lawrence St.       CR76 PG4  20-APR-13 too remote                                                  
+PG4  6 Lawrence St.       CR56 PG4  26-MAY-13                                                             
+PA14 16 Holhead           CR62 PA14 14-MAY-13 no dining room                                              
+PG36 2 Manor Rd.          CR56 PG36 28-APR-13                                                             
+PG21 18 Dale Rd.                                                                                          
+PG16 5 Novar Dr.                                                                                          
+PL94 6 Argyll St.                                                                                         
+
+8 rows selected. 
+
+SQL> 
+SQL> SELECT p.propertyno, p.street, v.*
+  2  FROM propertyforrent p LEFT OUTER JOIN viewing v
+  3  ON p.propertyno = v.propertyno;
+
+PROP STREET               CLIE PROP VIEWDATE  VIEW_COMMENT                                                
+---- -------------------- ---- ---- --------- ------------------------------------------------------------
+PA14 16 Holhead           CR56 PA14 24-MAY-13 too small                                                   
+PG4  6 Lawrence St.       CR76 PG4  20-APR-13 too remote                                                  
+PG4  6 Lawrence St.       CR56 PG4  26-MAY-13                                                             
+PA14 16 Holhead           CR62 PA14 14-MAY-13 no dining room                                              
+PG36 2 Manor Rd.          CR56 PG36 28-APR-13                                                             
+PG21 18 Dale Rd.                                                                                          
+PG16 5 Novar Dr.                                                                                          
+PL94 6 Argyll St.                                                                                         
+
+8 rows selected. 
+
+SQL> 
+SQL> SELECT p.propertyno pno,
+  2  p.street, v.viewdate,
+  3  c.lname, c.fname
+  4  FROM propertyforrent p,
+  5  viewing v, client c
+  6  WHERE p.propertyno = v.propertyno(+) and
+  7  v.clientno = c.clientno(+);
+
+PNO  STREET               VIEWDATE  LNAME                          FNAME                         
+---- -------------------- --------- ------------------------------ ------------------------------
+PG4  6 Lawrence St.       20-APR-13 Kay                            John                          
+PA14 16 Holhead           24-MAY-13 Stewart                        Aline                         
+PG36 2 Manor Rd.          28-APR-13 Stewart                        Aline                         
+PG4  6 Lawrence St.       26-MAY-13 Stewart                        Aline                         
+PA14 16 Holhead           14-MAY-13 Tregear                        Mary                          
+PG21 18 Dale Rd.                                                                                 
+PG16 5 Novar Dr.                                                                                 
+PL94 6 Argyll St.                                                                                
+
+8 rows selected. 
+
+SQL> 
+SQL> SELECT propertyno, street, city,
+  2  nvl(staffno, 'NO STAFF') AS Staffno
+  3  FROM propertyforrent
+  4  ORDER by 1;
+
+PROP STREET               CITY       STAFFNO 
+---- -------------------- ---------- --------
+PA14 16 Holhead           Aberdeen   SA9     
+PG16 5 Novar Dr.          Glasgow    SG14    
+PG21 18 Dale Rd.          Glasgow    SG37    
+PG36 2 Manor Rd.          Glasgow    SG37    
+PG4  6 Lawrence St.       Glasgow    NO STAFF
+PL94 6 Argyll St.         London     SL41    
+
+6 rows selected. 
+
+SQL> 
+SQL> SELECT substr(address,5, 10)
+  2  FROM privateowner;
+
+SUBSTR(ADD
+----------
+rgus Dr., 
+hray St., 
+ell St., G
+ark Pl., G
+
+SQL> 
+SQL> SELECT SUBSTR(address, INSTR(address,','), 10)
+  2  FROM PrivateOwner;
+
+SUBSTR(ADD
+----------
+, Aberdeen
+, Glasgow 
+, Glasgow 
+, Glasgow 
+
+SQL> 
+SQL> SELECT lname, fname,
+  2  DECODE(position,'Supervisor',1,
+  3  'Manager',2,
+  4  'Assistant',3,4) Position_Rank
+  5  FROM staff
+  6  ORDER by lname;
+
+LNAME           FNAME      POSITION_RANK
+--------------- ---------- -------------
+Beech           Ann                    3
+Brand           Susan                  2
+Ford            David                  1
+Howe            Mary                   3
+Lee             Julie                  3
+White           John                   2
+
+6 rows selected. 
+
+SQL> 
+SQL> SELECT lname, fname,
+  2  CASE position WHEN 'Supervisor' THEN '1'
+  3  WHEN 'Manager' THEN '2'
+  4  WHEN 'Assistant' THEN '3'
+  5  ELSE '4'
+  6  END
+  7  FROM staff;
+
+LNAME           FNAME      C
+--------------- ---------- -
+White           John       2
+Beech           Ann        3
+Ford            David      1
+Howe            Mary       3
+Brand           Susan      2
+Lee             Julie      3
+
+6 rows selected. 
+
+SQL> 
+SQL> SELECT branchno, street, city, postcode
+  2  FROM branch
+  3  WHERE branchno = '&v_branchno';
+old:SELECT branchno, street, city, postcode
+FROM branch
+WHERE branchno = '&v_branchno'
+new:SELECT branchno, street, city, postcode
+FROM branch
+WHERE branchno = 'B003'
+
+BRAN STREET               CITY       POSTCODE  
+---- -------------------- ---------- ----------
+B003 163 Main St.         Glasgow    G11 9QX   
+
+SQL> 
+SQL> DEFINE v_branchno = "B003" (CHAR)
+SQL> SELECT *
+  2  FROM branch
+  3  WHERE branchno = '&v_branchno';
+old:SELECT *
+FROM branch
+WHERE branchno = '&v_branchno'
+new:SELECT *
+FROM branch
+WHERE branchno = 'B003'
+
+BRAN STREET               CITY       POSTCODE  
+---- -------------------- ---------- ----------
+B003 163 Main St.         Glasgow    G11 9QX   
+
+SQL> 
+SQL> SELECT 'DROP TABLE '||table_name||¡¯;
+
+Error starting at line : 75 in command -
+SELECT 'DROP TABLE '||table_name||¡¯
+Error at Command Line : 75 Column : 35
+Error report -
+SQL Error: ORA-01756: quoted string not properly terminated
+01756. 00000 -  "quoted string not properly terminated"
+*Cause:    
+*Action:
+SQL> ¡¯ AS DROP_SCRIPT
+
+Error starting at line : 75 in command -
+¡¯ AS DROP_SCRIPT
+Error report -
+Unknown Command
+
+SQL> FROM user_tables;
+
+Error starting at line : 76 in command -
+FROM user_tables
+Error report -
+Unknown Command
+
+SQL> 
+SQL> spool off;

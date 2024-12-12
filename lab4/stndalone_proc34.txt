@@ -1,0 +1,66 @@
+REM This file is part of PL/SQL lab 4 in 95-736
+REM This file contains a stand-alone procedure called calc_sal_stats
+REM It calculates the mean, maximum and minimum salaries of
+REM all employees in the database, and returns them to the 
+REM calling procedure. The procedure uses 3 IN OUT parameters: 
+REM mean1, max1 and min1.
+
+CREATE OR REPLACE 
+PROCEDURE calc_sal_stats(   mean1 IN OUT mechanics.mech_salary%TYPE,
+                            max1 IN OUT mechanics.mech_salary%TYPE,
+                            min1 IN OUT mechanics.mech_salary%TYPE)
+ AS
+  temp_sal mechanics.mech_salary%TYPE; 
+  total_sal mechanics.mech_salary%TYPE := 0.00;
+  CURSOR c1 is 
+    SELECT mech_salary FROM mechanics;
+
+ BEGIN
+   OPEN c1;
+   LOOP
+     FETCH c1 INTO temp_sal;
+     EXIT WHEN c1%NOTFOUND;
+     total_sal:=total_sal+temp_sal;
+   END LOOP;
+   mean1:=total_sal/(c1%ROWCOUNT);
+   CLOSE c1;
+   SELECT MAX(mech_salary) INTO max1
+   FROM mechanics;
+   SELECT MIN(mech_salary) INTO min1 
+   FROM mechanics;
+
+ END;  
+
+/
+
+REM This is procedure print_sal_stats. 
+REM It calls the  stand-alone procedure calc_sal_stats
+REM It prints the mean, maximum and minimum salaries of
+REM all mechanics in the database.
+REM The procedure uses no parameters.
+
+CREATE OR REPLACE PROCEDURE print_sal_stats
+AS
+  mean_sal mechanics.mech_salary%TYPE:=-1; 
+  max_sal mechanics.mech_salary%TYPE:=-1;
+  min_sal mechanics.mech_salary%TYPE:=-1;
+
+ BEGIN
+  calc_sal_stats(mean_sal, max_sal, min_sal);
+/*Procedure call above. Note that procedure calc_sal_stats 
+must have been compiled before we can compile this procedure*/
+   DBMS_OUTPUT.PUT('MEAN SALARY:'||'  '||mean_sal);
+   DBMS_OUTPUT.NEW_LINE;
+   DBMS_OUTPUT.PUT('MAX SALARY:'||'  '||max_sal);
+   DBMS_OUTPUT.NEW_LINE;
+   DBMS_OUTPUT.PUT('MIN SALARY:'||'  '||min_sal);
+   DBMS_OUTPUT.NEW_LINE;
+
+ EXCEPTION
+   WHEN ZERO_DIVIDE THEN
+       DBMS_OUTPUT.PUT_LINE('No rows in mechanics table');
+       ROLLBACK;
+   WHEN OTHERS THEN
+       ROLLBACK;                  
+ END;  
+/

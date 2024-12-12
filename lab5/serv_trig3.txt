@@ -1,0 +1,27 @@
+REM This file is part of the server triggers lab. 
+REM The trigger here automates the business activity of 
+REM rewarding mechanics who have done over
+REM 500 repair jobs in one calendar year. 
+REM Note how the first of the year is calculated.
+
+CREATE OR REPLACE TRIGGER reward_best_mechanic
+BEFORE INSERT OR UPDATE ON repairs
+FOR EACH ROW
+
+DECLARE 
+   count_jobs_done_this_year NUMBER;
+   first_of_year DATE;
+   lowest_sal mechanics.mech_salary%TYPE;
+BEGIN
+   SELECT trunc(SYSDATE,'year') INTO first_of_year FROM dual;
+   SELECT count(*) INTO count_jobs_done_this_year FROM repairs
+   WHERE :new.mech_num=repairs.mech_num
+   AND repairs.repair_date>first_of_year;
+   IF count_jobs_done_this_year>500 THEN
+     SELECT min(mechanics.mech_salary) INTO lowest_sal FROM mechanics
+     WHERE mechanics.mech_num != :new.mech_num;
+     UPDATE mechanics SET mech_salary=lowest_sal+5000 WHERE
+       mechanics.mech_num=:new.mech_num;
+   END IF;
+END;
+/

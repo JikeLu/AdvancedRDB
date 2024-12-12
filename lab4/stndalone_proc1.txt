@@ -1,0 +1,26 @@
+REM This file is part of PL/SQL lab 4 in 95-736
+REM This file contains a stand-alone procedure called
+REM display_repairs that lists all the contents of 
+REM the table REPAIRS
+REM The procedure has no parameters
+
+CREATE OR REPLACE PROCEDURE display_repairs AS
+ repr_record repairs%ROWTYPE;
+ CURSOR c1 is 
+    SELECT * FROM repairs;
+
+ BEGIN
+   OPEN c1;
+   DBMS_OUTPUT.PUT('  '||'MECHANIC'||'   '||'CAR   '||'   '||'DATE  ');
+   LOOP
+     FETCH c1 INTO repr_record;
+     EXIT WHEN c1%NOTFOUND;
+     DBMS_OUTPUT.NEW_LINE;
+     DBMS_OUTPUT.PUT('  '||repr_record.mech_num||'        '||
+                     repr_record.car_num||'      '||
+                     repr_record.repair_date);
+     DBMS_OUTPUT.NEW_LINE;
+   END LOOP;
+   CLOSE c1;
+ END;  
+/

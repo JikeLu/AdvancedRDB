@@ -1,0 +1,88 @@
+
+Procedure DISPLAY_REPAIRS compiled
+
+MECHANIC   CAR      DATE  
+  100        1      15-JAN-15
+
+  100        1      20-JAN-16
+
+  101        1      23-JAN-16
+
+  101        3      20-JAN-16
+
+  102        6      17-JAN-16
+
+  103        5      22-JAN-16
+
+
+PL/SQL procedure successfully completed.
+
+
+Procedure CAR_INFO_BY_MAKE compiled
+
+NUMBER MODEL YEAR
+
+
+ 5 Ferrari F50 01-JAN-13
+
+
+PL/SQL procedure successfully completed.
+
+
+Procedure CALC_SAL_STATS compiled
+
+
+Procedure PRINT_SAL_STATS compiled
+
+MEAN SALARY:  56250
+MAX SALARY:  75000
+MIN SALARY:  45000
+
+
+PL/SQL procedure successfully completed.
+
+
+Function CALC_NUM_JOBS_ALL compiled
+
+
+Procedure PRINT_JOBS compiled
+
+Number of repair jobs: 0
+
+
+PL/SQL procedure successfully completed.
+
+
+Function CALC_NUM_JOBS_FOR_MODEL compiled
+
+
+Procedure PRINT_JOBS_MODEL compiled
+
+Number of repair jobs: 0
+
+
+PL/SQL procedure successfully completed.
+
+
+Package MECH_MANAGER compiled
+
+
+Package Body MECH_MANAGER compiled
+
+
+Procedure CREATE_MECH compiled
+
+THe new number is:  104
+
+
+PL/SQL procedure successfully completed.
+
+
+  MECH_NUM MECH_NAME                      MECH_SALARY MECH_SPECIALTY                                    
+---------- ------------------------------ ----------- --------------------------------------------------
+       100 George Jones                         55000 Mercedes Specialist                               
+       101 Billy Squier                         45000 Toyota Specialist                                 
+       102 John Cash                            50000 BMW Specialist                                    
+       103 Don Henley                           75000 Honda Specialist                                  
+       104 Devon Bush                           60000 Ferrari Specialist                                
+

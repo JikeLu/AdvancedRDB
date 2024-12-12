@@ -1,0 +1,306 @@
+
+Sequence MECH_SEQUENCE dropped.
+
+
+Sequence CAR_SEQUENCE dropped.
+
+
+Table REPAIRS dropped.
+
+
+Table MECHANICS dropped.
+
+
+Table CARS dropped.
+
+
+Error starting at line : 4 File @ E:\ARDB\lab5\lab5_create.txt
+In command -
+drop table repairs
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 5 File @ E:\ARDB\lab5\lab5_create.txt
+In command -
+drop table cars
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 6 File @ E:\ARDB\lab5\lab5_create.txt
+In command -
+drop table mechanics
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Creating sequence mech_sequence
+
+Sequence MECH_SEQUENCE created.
+
+Creating Table MECHANICS
+
+Table MECHANICS created.
+
+Creating sequence cars_sequence
+
+Sequence CAR_SEQUENCE created.
+
+
+Creating Table CARS
+
+Table CARS created.
+
+
+Creating Table REPAIRS
+
+Table REPAIRS created.
+
+Adding PRIMARY Constraint To MECHANICS Table
+
+Table MECHANICS altered.
+
+Adding PRIMARY Constraint To CARS Table
+
+Table CARS altered.
+
+Adding PRIMARY Constraint To REPAIRS Table
+
+Table REPAIRS altered.
+
+Adding FOREIGN Constraint To REPAIRS Table referring CARS
+
+Table REPAIRS altered.
+
+Adding FOREIGN Constraint To REPAIRS Table referring MECHANICS
+
+Table REPAIRS altered.
+
+
+Trigger CHECK_MECH_SAL compiled
+
+
+Trigger CHECK_DAILY_NUM_JOBS_PER_MECH compiled
+
+
+Trigger REWARD_BEST_MECHANIC compiled
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+Error starting at line : 5 File @ E:\ARDB\lab5\test_serv_trig1.txt
+In command -
+INSERT INTO mechanics VALUES(mech_sequence.NEXTVAL, 'Randy Jones', 
+                             45000.00, 'Toyota Specialist')
+Error report -
+ORA-20326: Error in Mechanics Salary
+ORA-06512: at "JIKELU.CHECK_MECH_SAL", line 24
+ORA-04088: error during execution of trigger 'JIKELU.CHECK_MECH_SAL'
+
+
+  MECH_NUM MECH_NAME                      MECH_SALARY MECH_SPECIALTY                                    
+---------- ------------------------------ ----------- --------------------------------------------------
+       100 Thomas Smith                         55000 Dodge Specialist                                  
+       101 Sydney Li                            50000 BMW Specialist                                    
+
+
+Sequence MECH_SEQUENCE dropped.
+
+
+Sequence CAR_SEQUENCE dropped.
+
+
+Table REPAIRS dropped.
+
+
+Table MECHANICS dropped.
+
+
+Table CARS dropped.
+
+
+Error starting at line : 4 File @ E:\ARDB\lab5\lab5_create.txt
+In command -
+drop table repairs
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 5 File @ E:\ARDB\lab5\lab5_create.txt
+In command -
+drop table cars
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 6 File @ E:\ARDB\lab5\lab5_create.txt
+In command -
+drop table mechanics
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Creating sequence mech_sequence
+
+Sequence MECH_SEQUENCE created.
+
+Creating Table MECHANICS
+
+Table MECHANICS created.
+
+Creating sequence cars_sequence
+
+Sequence CAR_SEQUENCE created.
+
+
+Creating Table CARS
+
+Table CARS created.
+
+
+Creating Table REPAIRS
+
+Table REPAIRS created.
+
+Adding PRIMARY Constraint To MECHANICS Table
+
+Table MECHANICS altered.
+
+Adding PRIMARY Constraint To CARS Table
+
+Table CARS altered.
+
+Adding PRIMARY Constraint To REPAIRS Table
+
+Table REPAIRS altered.
+
+Adding FOREIGN Constraint To REPAIRS Table referring CARS
+
+Table REPAIRS altered.
+
+Adding FOREIGN Constraint To REPAIRS Table referring MECHANICS
+
+Table REPAIRS altered.
+
+
+Trigger CHECK_DAILY_NUM_JOBS_PER_MECH compiled
+
+
+Procedure TEMP_TEST1 compiled
+
+Too many jobs for today!
+
+
+PL/SQL procedure successfully completed.
+
+
+Sequence MECH_SEQUENCE dropped.
+
+
+Sequence CAR_SEQUENCE dropped.
+
+
+Table REPAIRS dropped.
+
+
+Table MECHANICS dropped.
+
+
+Table CARS dropped.
+
+
+Error starting at line : 4 File @ E:\ARDB\lab5\lab5_create.txt
+In command -
+drop table repairs
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 5 File @ E:\ARDB\lab5\lab5_create.txt
+In command -
+drop table cars
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 6 File @ E:\ARDB\lab5\lab5_create.txt
+In command -
+drop table mechanics
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Creating sequence mech_sequence
+
+Sequence MECH_SEQUENCE created.
+
+Creating Table MECHANICS
+
+Table MECHANICS created.
+
+Creating sequence cars_sequence
+
+Sequence CAR_SEQUENCE created.
+
+
+Creating Table CARS
+
+Table CARS created.
+
+
+Creating Table REPAIRS
+
+Table REPAIRS created.
+
+Adding PRIMARY Constraint To MECHANICS Table
+
+Table MECHANICS altered.
+
+Adding PRIMARY Constraint To CARS Table
+
+Table CARS altered.
+
+Adding PRIMARY Constraint To REPAIRS Table
+
+Table REPAIRS altered.
+
+Adding FOREIGN Constraint To REPAIRS Table referring CARS
+
+Table REPAIRS altered.
+
+Adding FOREIGN Constraint To REPAIRS Table referring MECHANICS
+
+Table REPAIRS altered.
+
+
+Trigger REWARD_BEST_MECHANIC compiled
+
+
+Procedure TEMP_TEST2 compiled
+
+
+PL/SQL procedure successfully completed.
+

@@ -1,0 +1,11 @@
+BEGIN
+  DBMS_SCHEDULER.create_job (
+    job_name        => 'count_available_lots_job', 
+    job_type        => 'PLSQL_BLOCK',
+    job_action      => 'BEGIN count_available_lots; END;',
+    start_date      => SYSTIMESTAMP,
+    repeat_interval => 'FREQ=DAILY; BYHOUR=0; BYMINUTE=0; BYSECOND=0',
+    enabled         => TRUE,
+    comments        => 'Daily job to count available and not reserved lots'
+  );
+END;

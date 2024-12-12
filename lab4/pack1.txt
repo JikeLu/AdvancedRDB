@@ -1,0 +1,54 @@
+REM This file is part of PL/SQL lab 4 in 95-736
+REM This file contains a package called mech_manager 
+REM It has a function for adding a new mechanic, and a procedure
+REM for raising the salary of an existing mechanic
+REM Make sure you SET SERVEROUTPUT ON
+
+CREATE OR REPLACE PACKAGE mech_manager
+AS
+FUNCTION add_mech(name mechanics.mech_name%TYPE, salary mechanics.
+                  mech_salary%TYPE, specialty mechanics.mech_specialty%TYPE)
+RETURN mechanics.mech_num%TYPE;
+PROCEDURE sal_chnge(mech_number IN mechanics.mech_num%TYPE, salary  
+                    IN mechanics.mech_salary%TYPE);
+END mech_manager;
+/
+
+REM The body follows
+
+CREATE OR REPLACE PACKAGE BODY mech_manager 
+AS
+
+/*Function Follows*/
+FUNCTION add_mech(name mechanics.mech_name%TYPE, salary mechanics.
+                  mech_salary%TYPE, specialty mechanics.mech_specialty%TYPE)
+RETURN mechanics.mech_num%TYPE IS
+
+new_mech_no mechanics.mech_num%TYPE;
+
+BEGIN
+  SELECT mech_sequence.NEXTVAL INTO new_mech_no FROm dual;
+  INSERT INTO mechanics VALUES(new_mech_no, name, salary, specialty);
+  RETURN (new_mech_no); 
+END add_mech;
+
+/*PROCEDURE FOLLOWS*/
+PROCEDURE sal_chnge(mech_number IN mechanics.mech_num%TYPE, 
+                    salary IN mechanics.mech_salary%TYPE)
+IS
+no_number EXCEPTION;
+BEGIN
+ UPDATE mechanics
+   SET mech_salary=salary
+   WHERE mech_num=mech_number;
+ IF SQL%NOTFOUND THEN
+     RAISE no_number;
+ END IF;
+EXCEPTION
+    WHEN no_number THEN
+      DBMS_OUTPUT.PUT_LINE('NO such mechanic');
+      ROLLBACK;
+END sal_chnge;
+
+END mech_manager;
+/

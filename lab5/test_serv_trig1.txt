@@ -1,0 +1,6 @@
+INSERT INTO mechanics VALUES(mech_sequence.NEXTVAL, 'Thomas Smith', 
+                             55000.00, 'Dodge Specialist');
+INSERT INTO mechanics VALUES(mech_sequence.NEXTVAL, 'Sydney Li', 
+                             50000.00, 'BMW Specialist');
+INSERT INTO mechanics VALUES(mech_sequence.NEXTVAL, 'Randy Jones', 
+                             45000.00, 'Toyota Specialist');

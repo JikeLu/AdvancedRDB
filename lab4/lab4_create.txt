@@ -1,0 +1,74 @@
+REM This is part of the second lab in 95-736
+REM This file is used to create 3 tables: mechanics, cars, repairs. 
+REM WE also create 2 sequences. 
+drop table repairs;
+drop table cars;
+drop table mechanics;
+PROMPT 
+PROMPT Creating sequence mech_sequence
+CREATE SEQUENCE mech_sequence
+START WITH 100 INCREMENT BY 1;
+PROMPT Creating Table MECHANICS 
+CREATE TABLE mechanics(
+ mech_num      	                NUMBER                   NOT NULL,
+ mech_name                      VARCHAR2(30)               NOT NULL,
+ mech_salary			NUMBER(16,2),
+ mech_specialty			VARCHAR2(50)		   
+)
+;
+PROMPT Creating sequence cars_sequence
+CREATE SEQUENCE car_sequence
+START WITH 1 INCREMENT BY 1;
+PROMPT 
+PROMPT Creating Table CARS 
+CREATE TABLE cars(
+ car_num                        NUMBER                     NOT NULL,
+ car_model                      VARCHAR2(40)               NOT NULL,
+ car_year			DATE		   
+)
+;
+PROMPT 
+PROMPT Creating Table REPAIRS 
+CREATE TABLE repairs(
+ mech_num                       NUMBER               NOT NULL,
+ car_num                        NUMBER               NOT NULL,
+ repair_date			DATE		   
+)
+;
+PROMPT Adding PRIMARY Constraint To MECHANICS Table
+ALTER TABLE mechanics ADD (
+      CONSTRAINT mech_PK1
+      PRIMARY KEY (mech_num)
+)
+;
+PROMPT Adding PRIMARY Constraint To CARS Table
+ALTER TABLE cars ADD (
+      CONSTRAINT cars_PK1
+      PRIMARY KEY (car_num)
+)
+;
+PROMPT Adding PRIMARY Constraint To REPAIRS Table
+ALTER TABLE repairs ADD (
+      CONSTRAINT rep_PK1
+      PRIMARY KEY (mech_num, car_num, repair_date)
+)
+;
+PROMPT Adding FOREIGN Constraint To REPAIRS Table referring CARS
+ALTER TABLE repairs ADD (
+      CONSTRAINT rep_FK1
+      FOREIGN KEY (car_num)
+      REFERENCES  CARS (
+                   car_num)
+	on delete cascade
+)
+;
+PROMPT Adding FOREIGN Constraint To REPAIRS Table referring MECHANICS
+
+ALTER TABLE repairs ADD (
+      CONSTRAINT rep_FK2
+      FOREIGN KEY (mech_num)
+      REFERENCES  MECHANICS (
+                   mech_num)
+	on delete cascade
+)
+;

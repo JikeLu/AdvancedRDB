@@ -1,0 +1,27 @@
+REM This file is part of the server triggers lab
+REM It contains a trigger before insert and update on 
+REM the repairs table. 
+REM  It raises an unhandled exception if a mechanic gets >10
+REM repair jobs in a calendar day. 
+
+CREATE OR REPLACE TRIGGER check_daily_num_jobs_per_mech
+BEFORE INSERT OR UPDATE ON repairs
+FOR EACH ROW
+
+DECLARE 
+   count_jobs NUMBER;
+   too_many_jobs EXCEPTION;
+BEGIN
+   SELECT count(*) INTO count_jobs FROM repairs
+   WHERE :new.mech_num=repairs.mech_num
+   AND repairs.repair_date=:new.repair_date;
+   IF count_jobs>=10 THEN
+     RAISE too_many_jobs; 
+   END IF;
+EXCEPTION
+  WHEN TOO_MANY_JOBS THEN
+    DBMS_OUTPUT.PUT_LINE('Too many jobs for today!');
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('When OTHERS error in check_daily_num_jobs_per_mech.');
+END;
+/

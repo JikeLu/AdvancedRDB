@@ -1,0 +1,82 @@
+SQL> desc order_line;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ O_ID                                      NOT NULL NUMBER(8)
+ INV_ID                                    NOT NULL NUMBER(10)
+ OL_QUANTITY                               NOT NULL NUMBER(4)
+
+SQL> desc shipment_line;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SHIP_ID                                   NOT NULL NUMBER(10)
+ INV_ID                                    NOT NULL NUMBER(10)
+ SL_QUANTITY                                        NUMBER(4)
+ SL_DATE_RECEIVED                                   DATE
+
+SQL> desc shipment;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SHIP_ID                                   NOT NULL NUMBER(10)
+ SHIP_DATE_EXPECTED                                 DATE
+
+SQL> desc inventory;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ INV_ID                                    NOT NULL NUMBER(10)
+ ITEM_ID                                            NUMBER(8)
+ COLOR                                              VARCHAR2(20)
+ INV_SIZE                                           VARCHAR2(10)
+ INV_PRICE                                          NUMBER(6,2)
+ INV_QOH                                            NUMBER(4)
+
+SQL> desc color;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COLOR                                     NOT NULL VARCHAR2(20)
+
+SQL> desc item;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ITEM_ID                                   NOT NULL NUMBER(8)
+ ITEM_DESC                                          VARCHAR2(30)
+ CAT_ID                                             NUMBER(2)
+ ITEM_IMAGE                                         BLOB
+
+SQL> desc category;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CAT_ID                                    NOT NULL NUMBER(2)
+ CAT_DESC                                           VARCHAR2(20)
+
+SQL> desc orders;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ O_ID                                      NOT NULL NUMBER(8)
+ O_DATE                                             DATE
+ O_METHPMT                                          VARCHAR2(10)
+ C_ID                                               NUMBER(5)
+ OS_ID                                              NUMBER(3)
+
+SQL> desc order_source;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ OS_ID                                     NOT NULL NUMBER(3)
+ OS_DESC                                            VARCHAR2(30)
+
+SQL> desc customer;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ C_ID                                      NOT NULL NUMBER(5)
+ C_LAST                                             VARCHAR2(30)
+ C_FIRST                                            VARCHAR2(30)
+ C_MI                                               CHAR(1)
+ C_BIRTHDATE                                        DATE
+ C_ADDRESS                                          VARCHAR2(30)
+ C_CITY                                             VARCHAR2(30)
+ C_STATE                                            CHAR(2)
+ C_ZIP                                              VARCHAR2(10)
+ C_DPHONE                                           VARCHAR2(10)
+ C_EPHONE                                           VARCHAR2(10)
+ C_USERID                                           VARCHAR2(50)
+ C_PASSWORD                                         VARCHAR2(15)
+

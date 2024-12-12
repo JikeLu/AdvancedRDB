@@ -1,0 +1,38 @@
+REM This file is part of the second lab in 95-736. 
+REM This file is used to insert data into 3 tables:
+REM mechanics, cars and repairs
+REM Note how sequences are inserted into tables
+REM Here mech_num and car_num will hold sequence values
+REM First we insert rows into the MECHANICS table
+INSERT INTO mechanics VALUES(mech_sequence.NEXTVAL, 'George Jones', 
+                             55000.00, 'Mercedes Specialist');
+INSERT INTO mechanics VALUES(mech_sequence.NEXTVAL, 'Billy Squier', 
+                             45000.00, 'Toyota Specialist');
+INSERT INTO mechanics VALUES(mech_sequence.NEXTVAL, 'John Cash', 
+                             50000.00, 'BMW Specialist');
+INSERT INTO mechanics VALUES(mech_sequence.NEXTVAL, 'Don Henley', 
+                             75000.00, 'Honda Specialist');
+REM Next we insert rows into the CARS table
+INSERT INTO cars VALUES(car_sequence.NEXTVAL, 'Honda Accord LX V6', 
+                         '01-JAN-2008');
+INSERT INTO cars VALUES(car_sequence.NEXTVAL, 'Toyota Camry LE', 
+                         '01-JAN-2014');
+INSERT INTO cars VALUES(car_sequence.NEXTVAL, 'BMW 325i', 
+                         '01-JAN-2014');
+INSERT INTO cars VALUES(car_sequence.NEXTVAL, 'Nissan Skyline GT', 
+                         '01-JAN-2013');
+INSERT INTO cars VALUES(car_sequence.NEXTVAL, 'Ferrari F50', 
+                         '01-JAN-2013');
+INSERT INTO cars VALUES(car_sequence.NEXTVAL, 'Ford Contour SVT', 
+                         '01-JAN-2007');
+INSERT INTO cars VALUES(car_sequence.NEXTVAL, 'Honda Civic', 
+                         '01-JAN-2007');
+REM Next we insert rows into the REPAIRS table
+INSERT INTO repairs VALUES(100,1,'15-JAN-2015');
+INSERT INTO repairs VALUES(100,1,'20-JAN-2016');
+INSERT INTO repairs VALUES(101,1,'23-JAN-2016');
+INSERT INTO repairs VALUES(101,3,'20-JAN-2016');
+INSERT INTO repairs VALUES(103,5,'22-JAN-2016');
+INSERT INTO repairs VALUES(102,6,'17-JAN-2016');
+REM Next we commit the data
+COMMIT;

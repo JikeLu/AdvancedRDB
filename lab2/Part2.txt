@@ -1,0 +1,199 @@
+SQL> 
+SQL> SET ECHO ON;
+SQL> 
+SQL> DESCRIBE CUSTOMER;
+名称          空值?      类型           
+----------- -------- ------------ 
+C_ID        NOT NULL NUMBER(5)    
+C_LAST               VARCHAR2(30) 
+C_FIRST              VARCHAR2(30) 
+C_MI                 CHAR(1)      
+C_BIRTHDATE          DATE         
+C_ADDRESS            VARCHAR2(30) 
+C_CITY               VARCHAR2(30) 
+C_STATE              CHAR(2)      
+C_ZIP                VARCHAR2(10) 
+C_DPHONE             VARCHAR2(10) 
+C_EPHONE             VARCHAR2(10) 
+C_USERID             VARCHAR2(50) 
+C_PASSWORD           VARCHAR2(15) 
+SQL> 
+SQL> select * from customer;
+
+      C_ID C_LAST                         C_FIRST                        C C_BIRTHDA C_ADDRESS                      C_CITY                         C_ C_ZIP      C_DPHONE   C_EPHONE   C_USERID                                           C_PASSWORD     
+---------- ------------------------------ ------------------------------ - --------- ------------------------------ ------------------------------ -- ---------- ---------- ---------- -------------------------------------------------- ---------------
+         1 Harris                         Paula                          E 09-APR-53 1156 Water Street, Apt. #3     Osseo                          WI 54705      7155558943 7155559035 harrispe                                           asdfjk         
+         2 Garcia                         Maria                          H 14-JUL-58 2211 Pine Drive                Radisson                       WI 54867      7155558332 7155558332 garciamm                                           12345          
+         3 Miller                         Lee                              05-JAN-36 699 Pluto St. NW               Silver Lake                    WI 53821      7155554978 7155559002 millerl                                            zxcvb          
+         4 Chang                          Alissa                         R 01-OCT-76 987 Durham Rd.                 Apple Valley                   MN 55712      7155557651 7155550087 changar                                            qwerui         
+         5 Edwards                        Mitch                          M 20-NOV-86 4204 Garner Street             Washburn                       WI 54891      7155558243 7155556975 edwardsmm                                          qwerty         
+         6 Nelson                         Kyle                           E 04-DEC-84 232 Echo Rd.                   Minnetonka                     MN 55438      7151113333 7155552222 nelsonke                                           clever         
+
+已选择 6 行。
+
+SQL> 
+SQL> select * FROM customer WHERE c_city = 'Washburn';
+
+      C_ID C_LAST                         C_FIRST                        C C_BIRTHDA C_ADDRESS                      C_CITY                         C_ C_ZIP      C_DPHONE   C_EPHONE   C_USERID                                           C_PASSWORD     
+---------- ------------------------------ ------------------------------ - --------- ------------------------------ ------------------------------ -- ---------- ---------- ---------- -------------------------------------------------- ---------------
+         5 Edwards                        Mitch                          M 20-NOV-86 4204 Garner Street             Washburn                       WI 54891      7155558243 7155556975 edwardsmm                                          qwerty         
+
+SQL> 
+SQL> SELECT inv_price * 0.90 AS Sale_Price FROM Inventory;
+
+SALE_PRICE
+----------
+   233.991
+   233.991
+    26.955
+    26.955
+    26.955
+    26.955
+    26.955
+    26.955
+    53.955
+    53.955
+    53.955
+
+SALE_PRICE
+----------
+    53.955
+    53.955
+    53.955
+    14.391
+    14.391
+    14.391
+    14.391
+    14.391
+    14.391
+    14.391
+    14.391
+
+SALE_PRICE
+----------
+   179.955
+   179.955
+   188.955
+   188.955
+    14.355
+    14.355
+    14.355
+    17.991
+    17.991
+    17.991
+
+已选择 32 行。
+
+SQL> 
+SQL> SELECT C_FIRST || ', ' ||C_LAST AS FullName FROM customer;
+
+FULLNAME                                                      
+--------------------------------------------------------------
+Paula, Harris
+Maria, Garcia
+Lee, Miller
+Alissa, Chang
+Mitch, Edwards
+Kyle, Nelson
+
+已选择 6 行。
+
+SQL> 
+SQL> SELECT * FROM Inventory WHERE inv_price BETWEEN 15 AND 30;
+
+    INV_ID    ITEM_ID COLOR                INV_SIZE    INV_PRICE    INV_QOH
+---------- ---------- -------------------- ---------- ---------- ----------
+         3          3 Khaki                S               29.95        150
+         4          3 Khaki                M               29.95        147
+         5          3 Khaki                L               29.95          0
+         6          3 Navy                 S               29.95        139
+         7          3 Navy                 M               29.95        137
+         8          3 Navy                 L               29.95        115
+        15          5 Turquoise            10              15.99        121
+        16          5 Turquoise            11              15.99        111
+        17          5 Turquoise            12              15.99        113
+        18          5 Turquoise            1               15.99        121
+        19          5 Bright Pink          10              15.99        148
+
+    INV_ID    ITEM_ID COLOR                INV_SIZE    INV_PRICE    INV_QOH
+---------- ---------- -------------------- ---------- ---------- ----------
+        20          5 Bright Pink          11              15.99        137
+        21          5 Bright Pink          12              15.99        134
+        22          5 Bright Pink          1               15.99        123
+        27          6 Blue                 S               15.95         50
+        28          6 Blue                 M               15.95        100
+        29          6 Blue                 L               15.95        100
+        30          7 White                S               19.99        100
+        31          7 White                M               19.99        100
+        32          7 White                L               19.99        100
+
+已选择 20 行。
+
+SQL> 
+SQL> SELECT * FROM shipment_Line WHERE sl_date_received IS NULL;
+
+   SHIP_ID     INV_ID SL_QUANTITY SL_DATE_R
+---------- ---------- ----------- ---------
+         2          2          25          
+         3          5         200          
+         3          6         200          
+         3          7         200          
+
+SQL> 
+SQL> SELECT DISTINCT CAT_ID from item;
+
+    CAT_ID
+----------
+         1
+         2
+         4
+         3
+
+SQL> 
+SQL> SELECT * from inventory order by inv_qoh;
+
+    INV_ID    ITEM_ID COLOR                INV_SIZE    INV_PRICE    INV_QOH
+---------- ---------- -------------------- ---------- ---------- ----------
+         5          3 Khaki                L               29.95          0
+        25          1 Spruce               L              209.95          0
+        12          4 Royal                S               59.95          0
+         2          2 Light Grey                          259.99         12
+        26          1 Spruce               XL             209.95         12
+         1          2 Sky Blue                            259.99         16
+        24          1 Spruce               M              199.95         17
+        27          6 Blue                 S               15.95         50
+        31          7 White                M               19.99        100
+        32          7 White                L               19.99        100
+        30          7 White                S               19.99        100
+
+    INV_ID    ITEM_ID COLOR                INV_SIZE    INV_PRICE    INV_QOH
+---------- ---------- -------------------- ---------- ---------- ----------
+        29          6 Blue                 L               15.95        100
+        28          6 Blue                 M               15.95        100
+        16          5 Turquoise            11              15.99        111
+        14          4 Royal                L               59.95        112
+        17          5 Turquoise            12              15.99        113
+        23          1 Spruce               S              199.95        114
+         8          3 Navy                 L               29.95        115
+        18          5 Turquoise            1               15.99        121
+        15          5 Turquoise            10              15.99        121
+        22          5 Bright Pink          1               15.99        123
+        13          4 Royal                M               59.95        124
+
+    INV_ID    ITEM_ID COLOR                INV_SIZE    INV_PRICE    INV_QOH
+---------- ---------- -------------------- ---------- ---------- ----------
+        21          5 Bright Pink          12              15.99        134
+         9          4 Eggplant             S               59.95        135
+         7          3 Navy                 M               29.95        137
+        20          5 Bright Pink          11              15.99        137
+         6          3 Navy                 S               29.95        139
+         4          3 Khaki                M               29.95        147
+        19          5 Bright Pink          10              15.99        148
+         3          3 Khaki                S               29.95        150
+        10          4 Eggplant             M               59.95        168
+        11          4 Eggplant             L               59.95        187
+
+已选择 32 行。
+
+SQL> 
+SQL> spool off;

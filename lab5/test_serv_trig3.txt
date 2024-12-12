@@ -1,0 +1,38 @@
+REM This file is part of the server triggers lab. 
+REM This file is used to insert data into the repairs table
+REM It tests trigger reward_best_mechanic
+REM in file serv_trig3.txt. We insert 2 mechanics with REM equal salaries, and increase the number of repair REM jobs of Thomas Smith to >10. This should cause his salary 
+REM to go up to the maximum allowed, which is 60,000
+REM in this case.
+
+CREATE OR REPLACE PROCEDURE temp_test2
+AS
+i   NUMBER;
+j   NUMBER;
+first_car_value NUMBER;
+first_mech_value NUMBER;
+temp_date DATE;
+
+BEGIN
+ INSERT INTO mechanics VALUES(mech_sequence.NEXTVAL, 'Thomas Smith', 
+                             55000.00, 'Dodge Specialist');
+ INSERT INTO mechanics VALUES(mech_sequence.NEXTVAL, 'Sydney Li', 
+                             55000.00, 'BMW Specialist');
+ COMMIT;
+ FOR i IN 1..10 LOOP
+  INSERT INTO cars VALUES(car_sequence.NEXTVAL,'Dummy car', 
+'01-JAN-2008');
+ END LOOP;
+ COMMIT;
+ SELECT min(car_num) INTO first_car_value FROM cars;
+ SELECT min(mech_num) INTO first_mech_value FROM mechanics;
+ SELECT trunc(SYSDATE,'year') INTO temp_date FROM dual;
+ FOR j IN 1..52 LOOP
+   FOR i IN first_car_value..first_car_value+9 LOOP
+     INSERT INTO repairs values(first_mech_value,i,temp_date);
+     COMMIT;
+   END LOOP;
+   temp_date:=temp_date+1;
+ END LOOP;
+END; 
+/

@@ -1,0 +1,37 @@
+REM This file is part of the server triggers lab. It is a before 
+REM insert or update trigger on the mechanics table. 
+REM IT ensures that whenever you add a mechanic to the database, or
+REM update the salary of an existing mechanic, that the salary is
+REM in the acceptable range. Otherwise it raises an unhandled 
+REM exception that causes the transaction to be rolled back. 
+
+CREATE OR REPLACE TRIGGER check_mech_sal
+BEFORE INSERT OR UPDATE ON mechanics
+FOR EACH ROW
+
+DECLARE 
+   min_sal mechanics.mech_salary%type; 
+   max_sal mechanics.mech_salary%type;
+   count_rows NUMBER;
+   unfair_sal EXCEPTION;
+BEGIN
+   SELECT count(*) INTO count_rows FROM mechanics;
+   IF count_rows<1 THEN
+     RETURN;
+   END IF;
+   SELECT min(mech_salary) INTO min_sal FROM mechanics;
+   SELECT max(mech_salary) INTO max_sal FROM mechanics;
+   IF :new.mech_salary>=min_sal AND :new.mech_salary<=max_sal THEN
+      RETURN;
+   END IF;
+   IF :new.mech_salary<min_sal THEN min_sal := :new.mech_salary; 
+   END IF;
+   IF :new.mech_salary>max_sal THEN max_sal := :new.mech_salary;
+   END IF;
+   IF (max_sal - min_sal) >5000 THEN RAISE unfair_sal;
+   END IF;
+EXCEPTION
+   WHEN unfair_sal THEN
+RAISE_APPLICATION_ERROR (-20326,'Error in Mechanics Salary');
+END;
+/

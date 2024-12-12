@@ -1,0 +1,9 @@
+CREATE OR REPLACE PROCEDURE count_available_lots AS
+  lot_count NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO lot_count
+  FROM Lot
+  WHERE status = 'ready' AND reversed = 'no';
+
+  DBMS_OUTPUT.PUT_LINE('Number of available lots (not reserved): ' || lot_count);
+END;

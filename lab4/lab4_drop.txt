@@ -1,0 +1,14 @@
+REM This file is the drop file in lab 4. It drops the objects
+REM  you have defined: the 2 sequences and the 3 tables. 
+REM NOTE that you should drop the 'repairs' table before you
+REM drop 'cars' and 'mechanics' tables. This is because
+REM the 'repairs' table is dependent on the 'cars' and  'mechanics'
+REM tables, via the foreign key. So any attempt to drop the 
+REM 'cars' or 'mechanics' table, while the 'repairs' table exists
+REM will not be allowed (since dropping these will make the 
+REM 'repairs' table invalid
+drop sequence mech_sequence;
+drop sequence car_sequence;
+drop table repairs;
+drop table mechanics;
+drop table cars;

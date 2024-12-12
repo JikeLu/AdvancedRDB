@@ -1,0 +1,16 @@
+REM This file is part of PL/SQL lab 4. It calls a package 
+REM called mech_manager that we have created. 
+REM Note that the package must be successfully compiled
+REM before we can run this procedure
+
+CREATE OR REPLACE PROCEDURE create_mech(name mechanics.mech_name%TYPE, salary mechanics.
+                  mech_salary%TYPE, 
+                  specialty mechanics.mech_specialty%TYPE)
+AS
+num_returned mechanics.mech_num%TYPE;
+BEGIN
+  num_returned:=mech_manager.add_mech(name,salary,specialty);
+  DBMS_OUTPUT.PUT('THe new number is:  '||num_returned);
+  DBMS_OUTPUT.NEW_LINE;
+END;
+/

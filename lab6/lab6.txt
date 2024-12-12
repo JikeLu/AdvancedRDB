@@ -1,0 +1,74 @@
+SQL> DROP TABLE mytable;
+
+Table MYTABLE dropped.
+
+SQL> CREATE TABLE mytable (id number);
+
+Table MYTABLE created.
+
+SQL> 
+SQL> SELECT table_name, tablespace_name
+  2  FROM user_tables
+  3  WHERE table_name = 'MYTABLE';
+
+TABLE_NAME                                                                                                                       TABLESPACE_NAME               
+-------------------------------------------------------------------------------------------------------------------------------- ------------------------------
+MYTABLE                                                                                                                          USERS                         
+
+SQL> 
+SQL> SELECT default_tablespace, temporary_tablespace
+  2  FROM user_users;
+
+DEFAULT_TABLESPACE             TEMPORARY_TABLESPACE          
+------------------------------ ------------------------------
+USERS                          TEMP_PDB                      
+
+SQL> 
+SQL> --Q2
+SQL> --Tablespace: a logical storage unit that holds database objects such as tables, indexes, and data. It is made up
+SQL> --of one or more physical data files on disk.
+SQL> --Default tablespace: the tablespace where objects like tables are stored when no specific tablespace is mentioned during 
+SQL> --their creation.
+SQL> --Temporary tablespace: used to store temporary data.
+SQL> 
+SQL> SELECT table_name, constraint_name, constraint_type
+  2  FROM user_constraints
+  3  WHERE table_name = 'MYTABLE' and constraint_type = 'P';
+no rows selected
+SQL> 
+SQL> --Q3
+SQL> --No key was created. It is likely because the CREATE TABLE statement did not explicitly include a PRIMARY KEY constraint.
+SQL> 
+SQL> --Q4
+SQL> ALTER TABLE mytable
+  2  ADD CONSTRAINT pk PRIMARY KEY (id);
+
+Table MYTABLE altered.
+
+SQL> SELECT table_name, constraint_name, constraint_type
+  2  FROM user_constraints
+  3  WHERE table_name = 'MYTABLE' and constraint_type = 'P';
+
+TABLE_NAME                                                                                                                       CONSTRAINT_NAME                                                                                                                  C
+-------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------- -
+MYTABLE                                                                                                                          PK                                                                                                                               P
+
+SQL> 
+SQL> INSERT INTO mytable(id) values(7);
+
+1 row inserted.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> GRANT SELECT, INSERT, UPDATE, DELETE ON mytable TO ADVDB;
+
+Grant succeeded.
+
+SQL> 
+SQL> --Q5
+SQL> --Need to reference the table with the schema owner prefix. 
+SQL> --Q6
+SQL> --SELECT * from jikelu.mytable;
+SQL> SPOOL OFF;
